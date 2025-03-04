@@ -21,9 +21,13 @@
     font-family: montserrat;
 }
 
+.main-container{
+    transition: all .4s ease-in-out;
+}
+
 .main{
-    padding-bottom: 80px;
     background-color: var(--background);
+    padding-bottom: 80px;
 }
 
 
