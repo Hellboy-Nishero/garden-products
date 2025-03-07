@@ -2,6 +2,8 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import {BrowserRouter, Routes, Route} from 'react-router'
+import { Provider } from 'react-redux';
+import store from './store';
 import Home from './pages/Home/Home.jsx'
 import Layout from './pages/Layout.jsx'
 import Categories from './pages/Categories/Categories.jsx'
@@ -19,6 +21,7 @@ function App() {
 
   return (
     <>
+    <Provider store={store}>
     <BrowserRouter>
         <Routes>
             <Route path='/' element={<Layout />}>
@@ -34,6 +37,7 @@ function App() {
             </Route>
         </Routes>
     </BrowserRouter>
+    </Provider>
     </>
   )
 }

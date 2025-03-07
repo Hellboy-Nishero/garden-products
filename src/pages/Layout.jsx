@@ -1,10 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Outlet } from 'react-router'
 import Navbar from '../components/Navbar/Navbar'
+import { useSelector } from 'react-redux'
 
 const Layout = () => {
+
+  const dark = useSelector(state => state.theme.isDark);
+
+
   return (
-    <div className='main-container'>
+    <div className={`main-container ${dark ? "dark" : ""}`}>
         <Navbar />
         <main className='main'>
             <Outlet />

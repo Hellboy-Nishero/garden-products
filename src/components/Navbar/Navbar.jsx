@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react'
 import "./Navbar.scss";
 import { NavLink, Link } from 'react-router';
 import { Heart, Moon, ShoppingBag, Sun, X } from 'lucide-react';
+import { useDispatch } from 'react-redux';
+import { toggleTheme } from '../../store/slices/themeSlice';
+import Button from '../Button/Button';
 
 
 
@@ -11,13 +14,18 @@ const Navbar = () => {
 
     const [isOpen, setIsOpen] = useState(false);
 
+    const dispatch = useDispatch();
 
+    //toggles dark-mode after click
+    const toggleThemeHandler = () => {
+        dispatch(toggleTheme());
+    }
 
     useEffect(() => {
         const resizeHandler = () => setWidth(window.innerWidth);
         window.addEventListener("resize", resizeHandler);
 
-        return () => window.removeEventListener("resize", resizeHandler);
+        (() => {window.removeEventListener("resize", resizeHandler)})
     }, []);
 
 
@@ -29,7 +37,7 @@ const Navbar = () => {
                 <img src="/logo.png" alt="" className="logo" />
                 <label className="switch">
                     <input type="checkbox" />
-                    <span className='slider'>
+                    <span onClick={toggleThemeHandler} className='slider'>
                     <Sun className='icon' />
                     <Moon className='icon' />
                     </span>
@@ -37,7 +45,7 @@ const Navbar = () => {
             </div>
             {width >= 768 && 
             <div className="nav-mid">
-                <h3 className="discount__title">1 day discount!</h3>
+                <Button className={"discount__title"}>1 day discount!</Button>
                 <div className="links">
                     <NavLink to="/" className={({ isActive }) => `link ${isActive ? "active" : ""}`}>Main Page</NavLink>
                     <NavLink to="/categories" className={({ isActive }) => `link ${isActive ? "active" : ""}`}>Categories</NavLink>
@@ -46,8 +54,14 @@ const Navbar = () => {
                 </div>
             </div>}
             <div className="nav-right">
-                <Link to={"/cart"}><ShoppingBag className='icon' /></Link>
-                <Link to={"/favorites"}><Heart className='icon' /></Link>
+                <div className="icon-item">
+                    <Link to={"/favorites"}><Heart className='icon' /></Link>
+                    <span className="count">1</span>
+                </div>
+                <div className="icon-item">
+                    <Link to={"/cart"}><ShoppingBag className='icon' /></Link>
+                    <span className="count">10</span>
+                </div>
                 {width < 768 &&
                 <>
                 <div className="burger" onClick={() => setIsOpen(!isOpen)}>

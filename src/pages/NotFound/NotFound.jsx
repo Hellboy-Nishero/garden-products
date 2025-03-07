@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import "./NotFound.scss";
-import Button from '../../components/Navbar/Button/Button';
+import Button from '../../components/Button/Button';
 import { useNavigate } from 'react-router';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 
