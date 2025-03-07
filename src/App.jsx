@@ -2,11 +2,8 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import {BrowserRouter, Routes, Route} from 'react-router'
-<<<<<<< HEAD
 import { Provider } from 'react-redux';
 import store from './store';
-=======
->>>>>>> origin/margorita
 import Home from './pages/Home/Home.jsx'
 import Layout from './pages/Layout.jsx'
 import Categories from './pages/Categories/Categories.jsx'
