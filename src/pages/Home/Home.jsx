@@ -1,10 +1,14 @@
-import React from 'react'
-import "./Home.scss";
+import React from "react";
+import Banner from "./components/HomeBanner.jsx";
+import HomeDiscount from "./components/HomeDiscount.jsx";
 
-const Home = () => {
+const MainPage = () => {
   return (
-    <>Home</>
-  )
-}
+    <>
+      <Banner />
+      <HomeDiscount />
+    </>
+  );
+};
 
-export default Home
+export default MainPage;

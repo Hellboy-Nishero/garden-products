@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, {useEffect, useState} from 'react'
 import "./NotFound.scss";
 import Button from '../../components/Navbar/Button/Button';
@@ -22,6 +23,14 @@ const NotFound = () => {
         <Button type={"primary"} onClick={goHomeHandler}>Go Home</Button>
       </div>
     </>
+=======
+import React from 'react'
+import "./NotFound.scss";
+
+const NotFound = () => {
+  return (
+    <>NotFound</>
+>>>>>>> origin/igor
   )
 }
 
