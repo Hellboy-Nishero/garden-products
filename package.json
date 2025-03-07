@@ -17,7 +17,11 @@
     "react-hook-form": "^7.54.2",
     "react-redux": "^9.2.0",
     "react-router": "^7.2.0",
+<<<<<<< HEAD
     "sass": "^1.85.1",
+=======
+    "react-router-dom": "^7.2.0",
+>>>>>>> origin/irina
     "sass-embedded": "^1.85.1"
   },
   "devDependencies": {
