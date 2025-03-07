@@ -12,15 +12,15 @@
         max-height: 270px;
     }
     .notFound__title{
-        font-weight: 700;
+        font-weight: var(--bold);
         font-size: 64px;
         color: var(--txt-black);
         text-align: center;
     }
     .notFound__text{
         max-width: 760px;
-        font-weight: 500;
-        font-size: 20px;
+        font-weight: var(--normal);
+        font-size: var(--font-medium);
         color: var(--txt-grey);
         text-align: center;
     }
