@@ -1,0 +1,173 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+:root {
+  --green: #92a134;
+  --background: #fffff1;
+  --sale: #f26d22;
+  --white: #fff;
+  --black: #424436;
+  --grey-divider: #ddd;
+  --grey: #8b8b8b;
+  --light-grey: #f2f6d3;
+  --txt-white: #fff;
+  --txt-black: #282828;
+  --txt-grey: #8b8b8b;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+  font-family: montserrat;
+}
+
+.main-container {
+  transition: all 0.4s ease-in-out;
+}
+
+.main {
+  background-color: var(--background);
+  padding-bottom: 80px;
+}
+
+.navbar {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--background);
+  padding: 30px 40px;
+}
+.navbar .nav-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.navbar .nav-left .logo {
+  width: 70px;
+  height: 70px;
+}
+.navbar .nav-left .switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 32px;
+}
+.navbar .nav-left .switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.navbar .nav-left .switch input:checked + .slider:before {
+  transform: translate(99%, 50%);
+}
+.navbar .nav-left .switch .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--grey);
+  border-radius: 32px;
+  transition: all 0.4s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+}
+.navbar .nav-left .switch .slider .icon {
+  color: var(--white);
+}
+.navbar .nav-left .switch .slider::before {
+  content: "";
+  position: absolute;
+  height: 28px;
+  width: 28px;
+  left: 2px;
+  bottom: 50%;
+  transform: translateY(50%);
+  background-color: var(--white);
+  transition: all 0.4s ease-in-out;
+  border-radius: 50%;
+}
+.navbar .nav-mid {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.navbar .nav-mid .discount {
+  padding: 6px 16px;
+  background-color: var(--green);
+  text-align: center;
+  align-self: center;
+  color: var(--txt-white);
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 8px;
+}
+.navbar .nav-mid .links {
+  display: flex;
+  gap: 32px;
+}
+.navbar .nav-mid .links .link {
+  color: var(--txt-black);
+  font-weight: 500;
+  font-size: 20px;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+.navbar .nav-mid .links .link:hover {
+  color: var(--txt-grey);
+}
+.navbar .nav-mid .links .link.active {
+  color: var(--txt-grey);
+}
+.navbar .nav-right {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+.navbar .nav-right .icon {
+  color: var(--txt-black);
+  width: 48px;
+  height: 48px;
+  stroke-width: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.navbar .nav-right .icon:hover {
+  color: var(--txt-grey);
+}
+.navbar .nav-right .burger {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.navbar .nav-right .bar {
+  width: 30px;
+  height: 4px;
+  background-color: var(--black);
+  transition: all 0.4s ease-in-out;
+}
+.navbar .nav-right .menu {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 60px;
+  right: 0;
+  max-width: 100px;
+  transform: translateX(100%);
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  transition: all 0.4s ease-in-out;
+}
+.navbar .nav-right .menu.open {
+  transform: translateX(0);
+}
+.navbar .nav-right .menu .link {
+  color: var(--txt-black);
+  text-decoration: none;
+}/*# sourceMappingURL=Navbar.css.map */

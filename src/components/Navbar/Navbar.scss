@@ -1,0 +1,143 @@
+@import "../../index.scss";
+
+.navbar{
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--background);
+    padding: 30px 40px;
+    .nav-left{
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        .logo{
+            width: 70px;
+            height: 70px;
+        }
+        .switch{
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 32px;
+            input{
+                opacity: 0;
+                width: 0;
+                height: 0;
+                &:checked + .slider:before{
+                    transform: translate(99%, 50%);
+                }
+            }
+            .slider{
+                position: absolute;
+                cursor: pointer;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: var(--grey);
+                border-radius: 32px;
+                transition: all .4s ease-in-out;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 5px;
+                .icon{
+                    color: var(--white);
+                }
+                &::before{
+                    content: "";
+                    position: absolute;
+                    height: 28px;
+                    width: 28px;
+                    left: 2px;
+                    bottom: 50%;
+                    transform: translateY(50%);
+                    background-color: var(--white);
+                    transition: all .4s ease-in-out;
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+    .nav-mid{
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        .discount{
+            padding: 6px 16px;
+            background-color: var(--green);
+            text-align: center;
+            align-self: center;
+            color: var(--txt-white);
+            font-size: 16px;
+            font-weight: 500;
+            border-radius: 8px;
+        }
+        .links{
+            display: flex;
+            gap: 32px;
+            .link{
+                color: var(--txt-black);
+                font-weight: 500;
+                font-size: 20px;
+                text-decoration: none;
+                transition: all .3s ease-in-out;
+                &:hover{
+                    color: var(--txt-grey);
+                }
+                &.active{
+                    color: var(--txt-grey);
+                }
+            }
+        }
+    }
+    .nav-right{
+        display: flex;
+        align-items: center;
+        gap: 26px;
+        .icon{
+            color: var(--txt-black);
+            width: 48px;
+            height: 48px;
+            stroke-width: 1px;
+            cursor: pointer;
+            transition: all .3s ease-in-out;
+            &:hover{
+                color: var(--txt-grey);
+            }
+        }
+        .burger{
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .bar{
+            width: 30px;
+            height: 4px;
+            background-color: var(--black);
+            transition: all .4s ease-in-out;
+        }
+        .menu{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 60px;
+            right: 0;
+            max-width: 100px;
+            transform: translateX(100%);
+            display: flex;
+            gap: 10px;
+            flex-direction: column;
+            transition: all .4s ease-in-out;
+            &.open{
+                transform: translateX(0);
+            }
+            .link{
+                color:  var(--txt-black);
+                text-decoration: none;
+            }
+        }
+    }
+}
