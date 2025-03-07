@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useEffect } from 'react'
 import { Outlet } from 'react-router'
 import Navbar from '../components/Navbar/Navbar'
@@ -10,6 +11,15 @@ const Layout = () => {
 
   return (
     <div className={`main-container ${dark ? "dark" : ""}`}>
+=======
+import React from 'react'
+import { Outlet } from 'react-router'
+import Navbar from '../components/Navbar/Navbar'
+
+const Layout = () => {
+  return (
+    <div className='main-container'>
+>>>>>>> origin/margorita
         <Navbar />
         <main className='main'>
             <Outlet />
