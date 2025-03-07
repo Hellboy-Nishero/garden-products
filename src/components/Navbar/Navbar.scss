@@ -1,6 +1,5 @@
 @import "../../index.scss";
 
-<<<<<<< HEAD
 .discount__title{
     padding: 6px 16px;
     background-color: var(--green);
@@ -12,8 +11,6 @@
     border-radius: 8px;
 }
 
-=======
->>>>>>> origin/igor
 .navbar{
     max-width: 1440px;
     margin: 0 auto;
@@ -22,10 +19,7 @@
     align-items: center;
     background-color: var(--background);
     padding: 30px 40px;
-<<<<<<< HEAD
     border-bottom: 1px solid var(--grey-divider);
-=======
->>>>>>> origin/igor
     .nav-left{
         display: flex;
         align-items: center;
@@ -83,19 +77,6 @@
         display: flex;
         flex-direction: column;
         gap: 18px;
-<<<<<<< HEAD
-=======
-        .discount{
-            padding: 6px 16px;
-            background-color: var(--green);
-            text-align: center;
-            align-self: center;
-            color: var(--txt-white);
-            font-size: 16px;
-            font-weight: 500;
-            border-radius: 8px;
-        }
->>>>>>> origin/igor
         .links{
             display: flex;
             gap: 32px;
@@ -125,15 +106,10 @@
             stroke-width: 1px;
             cursor: pointer;
             transition: all .3s ease-in-out;
-<<<<<<< HEAD
             fill: var(--background);
             &:hover{
                 fill: var(--black);
                 color: var(--txt-white);
-=======
-            &:hover{
-                color: var(--txt-grey);
->>>>>>> origin/igor
             }
         }
         .burger{
@@ -147,27 +123,6 @@
             background-color: var(--black);
             transition: all .4s ease-in-out;
         }
-<<<<<<< HEAD
-        // .menu{
-        //     position: absolute;
-        //     width: 100%;
-        //     height: 100%;
-        //     top: 60px;
-        //     right: 0;
-        //     max-width: 100px;
-        //     transform: translateX(100%);
-        //     display: flex;
-        //     gap: 10px;
-        //     flex-direction: column;
-        //     transition: all .4s ease-in-out;
-        //     &.open{
-        //         transform: translateX(0);
-        //     }
-        //     .link{
-        //         color:  var(--txt-black);
-        //         text-decoration: none;
-        //     }
-        // }
         .menu{
             position: absolute;
             visibility: hidden;
@@ -207,26 +162,6 @@
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 36px;
-=======
-        .menu{
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 60px;
-            right: 0;
-            max-width: 100px;
-            transform: translateX(100%);
-            display: flex;
-            gap: 10px;
-            flex-direction: column;
-            transition: all .4s ease-in-out;
-            &.open{
-                transform: translateX(0);
-            }
-            .link{
-                color:  var(--txt-black);
-                text-decoration: none;
->>>>>>> origin/igor
             }
         }
     }
