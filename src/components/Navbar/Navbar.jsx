@@ -2,12 +2,9 @@ import React, { useEffect, useState } from 'react'
 import "./Navbar.scss";
 import { NavLink, Link } from 'react-router';
 import { Heart, Moon, ShoppingBag, Sun, X } from 'lucide-react';
-<<<<<<< HEAD
 import { useDispatch } from 'react-redux';
 import { toggleTheme } from '../../store/slices/themeSlice';
 import Button from '../Button/Button';
-=======
->>>>>>> origin/margorita
 
 
 
@@ -17,26 +14,18 @@ const Navbar = () => {
 
     const [isOpen, setIsOpen] = useState(false);
 
-<<<<<<< HEAD
     const dispatch = useDispatch();
 
     //toggles dark-mode after click
     const toggleThemeHandler = () => {
         dispatch(toggleTheme());
     }
-=======
-
->>>>>>> origin/margorita
 
     useEffect(() => {
         const resizeHandler = () => setWidth(window.innerWidth);
         window.addEventListener("resize", resizeHandler);
 
-<<<<<<< HEAD
         (() => {window.removeEventListener("resize", resizeHandler)})
-=======
-        return () => window.removeEventListener("resize", resizeHandler);
->>>>>>> origin/margorita
     }, []);
 
 
