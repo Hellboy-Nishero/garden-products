@@ -14,9 +14,9 @@
       .filtration__input {
           width: 70px;
           padding: 6px 8px;
-          border: 1px solid #ddd;
+          border: 1px solid var(--grey);
           border-radius: 4px;
-          font-size: 14px;
+          font-size: var(--font-small);
       }
   }
 
@@ -37,23 +37,24 @@
 
       .filtration__select {
           padding: 6px 8px;
-          border: 1px solid #ddd;
+          border: 1px solid var(--grey);
           border-radius: 4px;
-          font-size: 14px;
+          font-size: var(--font-small);
           cursor: pointer;
       }
   }
 
   #discounted {
-
-height: 26px;
-width: 26px;
-  }
+    height: 26px;
+    width: 26px;
+    }
 
 
   &__label {
-      font-weight: 500;
-      font-size: 14px;
+      font-weight: var(--light-bold);
+      font-size: var(--font-small);
+      color: var(--txt-black);
+      transition: all .4s ease-in-out;
       
   }
 

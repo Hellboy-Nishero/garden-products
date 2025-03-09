@@ -1,7 +1,7 @@
 import React from 'react'
 import "./Filtration.scss";
 
-const Filtration = () => {
+const Filtration = ({discounted}) => {
   return (
     <div className="filtration">
     {/* Блок цены */}
@@ -20,12 +20,17 @@ const Filtration = () => {
     </div>
 
     {/* Чекбокс скидок */}
-    <div className="filtration__discount">
-        <label htmlFor="discounted" className="filtration__label">
-            Discounted items
-        </label>
-        <input type="checkbox" id="discounted" />
-    </div>
+    {
+        discounted &&     
+        <div className="filtration__discount">
+            <label htmlFor="discounted" className="filtration__label">
+                Discounted items
+            </label>
+            <input type="checkbox" id="discounted" />
+        </div>
+
+    }
+
 
     {/* Сортировка */}
     <div className="filtration__sort">

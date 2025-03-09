@@ -1,21 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Filtration from "../../components/Filtration/Filtration";
-import { Heart, ShoppingBag } from "lucide-react";
 import "./Category.scss";
+import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
+import { useSelector } from "react-redux";
+import ProductList from '../../components/ProductList/ProductList';
 
-const categories = [
-  { id: 1, name: "Fertilizers" },
-  { id: 2, name: "Protective Products" },
-  { id: 3, name: "Planting Material" },
-  { id: 4, name: "Tools & Equipment" },
-  { id: 5, name: "Pots and planters" },
-];
 
 const Category = () => {
-  const { categoryId } = useParams(); // Получаем `categoryId` из URL
+  const { name } = useParams(); // Получаем `name` из URL
   const [products, setProducts] = useState([]); // Все товары
   const [filteredProducts, setFilteredProducts] = useState([]); // Отфильтрованные товары
+  const categories = useSelector(state => state.category.categories);
+  const category = categories.find((category) => category.name === name);
 
 
   useEffect(() => {
@@ -36,45 +33,23 @@ const Category = () => {
   }, []);
 
   useEffect(() => {
-    const filtered = products.filter((product) => product.categoryId === parseInt(categoryId));
-    setFilteredProducts(filtered);
-  }, [products, categoryId]);
 
-  const category = categories.find((category) => category.id === parseInt(categoryId));
+    const filtered = products.filter((product) => product.categoryId === category.id);
+    setFilteredProducts(filtered);
+  }, [products, name]);
+
+
 
   return (
     <div className="category">
-      <h1 className="category__title">{category ? category.name : "Category Not Found"}</h1>
+      <Breadcrumbs />
+      <h1 className="page-title">{category ? category.name : "Category Not Found"}</h1>
 
-      <Filtration products={products} onFilterChange={setFilteredProducts} />
+      <Filtration discounted={true} />
 
       <div className="category__list">
-        {filteredProducts.length > 0 ? (
-          filteredProducts.map((product) => (
-            <div key={product.id} className="product-card"
-            >
-              {product.discount && <div className="discount-badge">-{product.discount}%</div>}
-              <Link to='/allproducts'>
-                <img className="product-card__image"
-                
-                  src={`https://exam-server-5c4e.onrender.com${product.image}`}
-                  alt={product.title} />
-              </Link>
-              <div className="product-icons">
-                <Heart className="icon" />
-                <ShoppingBag className="icon" />
-              </div>
-
-              <div className="card-footer">
-                <h3 className="product-card__name">{product.title}</h3>
-                <div className="product-card__price">
-                  <span className="current-price">${product.price}</span>
-                  {product.oldPrice && <span className="old-price">${product.oldPrice}</span>}
-                </div>
-              </div>
-            </div>
-          ))
-        ) : (
+        {filteredProducts.length > 0 ? 
+        <ProductList products={filteredProducts} /> : (
           <p className="category__empty">No products found.</p>
         )}
       </div>

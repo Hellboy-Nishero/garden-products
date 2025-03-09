@@ -13,7 +13,7 @@ const Breadcrumbs = () => {
         <div className="breadcrumbs__item">Main page</div>
         {
             pathArray.map((page, index) => 
-                <div className='breadcrumbs__item' key={index}>{page.split("-").join(" ")}</div>
+                <div className='breadcrumbs__item' key={index}>{decodeURIComponent(page.split("-").join(" "))}</div>
             )
         }
     </div>

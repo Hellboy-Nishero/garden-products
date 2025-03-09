@@ -4,9 +4,9 @@ import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 
 const Cart = () => {
   return (
-    <>
+    <div className='cart'>
     <Breadcrumbs />
-    </>
+    </div>
   )
 }
 

@@ -8,21 +8,19 @@ const Categories = () => {
     const categories = useSelector((state) => state.category.categories);
     const navigate = useNavigate(); 
 
-    const handleCategoryClick = (categoryId) => {
-        navigate(`/categories/${categoryId}`); 
-    };
 
     return (
         <div className='categories'>
             <div className="categories__container">
                 <Breadcrumbs />
-                <h2 className="categories__title">Categories</h2>
+                <h2 className="page-title">Categories</h2>
                 <div className="categories__list">
                     {categories && categories.map((category) => (
+                        <Link
+                        key={category.id} 
+                        to={`/categories/${category.name}`}>
                         <div 
-                            key={category.id} 
                             className="category-card"
-                            onClick={() => handleCategoryClick(category.id)} 
                         >
                             {category.image && (
                                 <img 
@@ -32,10 +30,12 @@ const Categories = () => {
                                 />
                             )}
                          
-                            <Link to={`/categories/${category.id}`} className="category-card__link">
+                            <span className="category-card__link">
                                 {category.name}
-                            </Link>
+                            </span>
                         </div>
+                        </Link>
+
                     ))}
                 </div>
             </div>

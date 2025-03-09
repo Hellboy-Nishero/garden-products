@@ -1,6 +1,6 @@
 import React from 'react';
 import "./HomeBanner.scss";
-import Button from "./Button.jsx"
+import Button from '../../../components/Button/Button.jsx';
 
 const Banner = () => {
   return (
@@ -10,7 +10,7 @@ const Banner = () => {
           <img src="/Banner.png" alt="" className='banner__image' />
           <div className="banner__content">
             <h1 className='title'>Amazing Discounts <span>on Garden Products!</span></h1>
-              <Button className='btn-default-size'>Check out</Button>
+              <Button type={"primary"} className={"btn-banner"}>Check out</Button>
           </div>
         </div>
       </div>
