@@ -15,7 +15,7 @@ const Breadcrumbs = () => {
 
       return() => window.removeEventListener("resize", () => handleResize)
 
-    }, [width])
+    }, [])
 
 
 
