@@ -1,6 +1,3 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import {BrowserRouter, Routes, Route} from 'react-router'
 import { Provider } from 'react-redux';
 import store from './store';
@@ -27,7 +24,7 @@ function App() {
             <Route path='/' element={<Layout />}>
               <Route index element={<Home />}/>
               <Route path='/categories' element={<Categories />} />
-              <Route path='/categories/category' element={<Category />} />
+              <Route path='/categories/:name' element={<Category />} />
               <Route path='/all-products' element={<AllProducts />} /> 
               <Route path='/all-products/product' element={<Product />} />
               <Route path='/all-sales' element={<AllSales />} /> 

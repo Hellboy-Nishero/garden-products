@@ -21,6 +21,11 @@
     --font-big: 24px;
     --font-medium: 20px;
     --font-small: 16px;
+    --gap-large: 32px;
+    --gap-big: 24px;
+    --gap-medium: 16px;
+    --gap-small: 8px;
+
 }
 
 *{
@@ -33,7 +38,6 @@
 
 .main-container{
     transition: all .4s ease-in-out;
-    max-width: 1440px;
     margin: 0 auto;
     background-color: var(--background);
     &.dark{
@@ -42,32 +46,54 @@
         --black: #fff;
         --txt-white: #282828;
         --txt-black: #fff;
+        --light-grey: #383A2C;
     }
 }
 
 .main{
-    padding: 40px 0;
+    padding-bottom: 80px;
     max-width: 1440px;
     margin: 0 auto;
 }
+
+.page-title {
+    font-weight: 700;
+    font-size: var(--font-title);
+    margin-bottom: 40px;
+    color: var(--txt-black);
+    transition: all .4s ease-in-out;
+  }
+
+  .icon{
+    color: var(--txt-black);
+    width: 48px;
+    height: 48px;
+    stroke-width: 1px;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+    fill: var(--background);
+    &:hover{
+        fill: var(--black);
+        color: var(--txt-white);
+    }
+  }
 
 
 .btn{
     padding: 12px 32px;
     border-radius: var(--radius-small);
-    border: none;
     font-size: var(--font-medium);
     font-weight: var(--light-bold);
     cursor: pointer;
     transition: all .5s ease-in-out;
     &-primary{
         color: var(--txt-white);
-        border: 1px solid var(--txt-white);
+        border: 1px solid var(--txt-green);
         background-color: var(--green);
         &:hover{
             color: var(--txt-black);
             border-color: var(--black);
-            background-color: var(--white);
+            background-color: var(--light-grey);
         }
     }
     &-secondary{
@@ -90,6 +116,7 @@
         color: var(--green);
         background-color: var(--background);
         pointer-events: none;
+        border: none;
     }
 }
 
@@ -97,6 +124,7 @@
 .breadcrumbs{
    display: flex;
    gap: 16px;
+   padding: 40px 0;
    &__item{
     padding: 8px 16px;
     border: 1px solid var(--grey);
@@ -106,6 +134,7 @@
     font-weight: var(--normal);
     position: relative;
     text-transform: capitalize;
+    transition: all .4s ease-in-out;
     &::after{
         content: "";
         position: absolute;
@@ -126,12 +155,43 @@
 }
 
 
+@media screen and (max-width: 1000px){
+    :root{
+        --gap-medium: 12px;
+        --gap-large: 24px;
+    }
+    .main{
+        padding-bottom: 60px;
+    }
+    .icon{
+        width: 44px;
+        height: 44px;
+    }
+}
+
+
 @media screen and (max-width: 768px) {
     :root{
         --font-title: 56px;
         --font-big: 20px;
         --font-medium: 16px;
         --font-small: 12px;
+        --gap-large: 20px;
+    }
+}
+
+
+@media screen and (max-width: 480px){
+    :root{
+        --font-title: 48px;
+        --font-large: 28px;
+        --font-big: 20px;
+        --font-medium: 18px;
+        --font-small: 14px;
+    }
+    .icon{
+        width: 32px;
+        height: 32px;
     }
 }
 

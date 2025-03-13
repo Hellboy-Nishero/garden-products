@@ -4,9 +4,9 @@ import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 
 const AllSales = () => {
   return (
-    <>
+    <div className='all-sales'>
     <Breadcrumbs />
-    </>
+    </div>
   )
 }
 

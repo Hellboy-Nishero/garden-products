@@ -25,7 +25,7 @@ const Navbar = () => {
         const resizeHandler = () => setWidth(window.innerWidth);
         window.addEventListener("resize", resizeHandler);
 
-        (() => {window.removeEventListener("resize", resizeHandler)})
+        return () => {window.removeEventListener("resize", resizeHandler)}
     }, []);
 
 
@@ -75,8 +75,8 @@ const Navbar = () => {
                             <div className="menu-links">
                             <Link to="/" onClick={() => setIsOpen(false)} className="link">Main Page</Link>
                             <Link to="/categories" onClick={() => setIsOpen(false)} className="link">Categories</Link>
-                            <Link to="/allproducts" onClick={() => setIsOpen(false)} className="link">All products</Link>
-                            <Link to="/allsales" onClick={() => setIsOpen(false)} className="link">All sales</Link>
+                            <Link to="/all-products" onClick={() => setIsOpen(false)} className="link">All products</Link>
+                            <Link to="/all-sales" onClick={() => setIsOpen(false)} className="link">All sales</Link>
                             <h3 className="discount__title">1 day discount!</h3>
                             </div>
                     </div>

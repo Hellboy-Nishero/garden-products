@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { Outlet } from 'react-router'
 import Navbar from '../components/Navbar/Navbar'
+import Footer from '../components/Footer/Footer';
 import { useSelector } from 'react-redux'
 
 const Layout = () => {
@@ -14,7 +15,7 @@ const Layout = () => {
         <main className='main'>
             <Outlet />
         </main>
-        Footer
+        <Footer />
     </div>
   )
 }
