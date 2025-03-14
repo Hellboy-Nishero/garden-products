@@ -1,76 +1,113 @@
-@import "../../index.scss";
-
-.filtration {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  margin-bottom: 24px;
-
-  &__price {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-
-      .filtration__input {
-          width: 70px;
-          padding: 6px 8px;
-          border: 1px solid #ddd;
-          border-radius: 4px;
-          font-size: 14px;
+.filtration { 
+    display: flex; 
+    align-items: center; 
+    gap: var(--gap-big); 
+    margin-bottom: 24px; 
+    flex-wrap: nowrap; 
+  
+    &__price, 
+    &__discount, 
+    &__sort { 
+      display: flex; 
+      align-items: center; 
+      gap: var(--gap-small); 
+    }
+  
+    .filtration__input { 
+      width: 112px; 
+      height: 36px;
+      padding: 6px 8px; 
+      border: 1px solid var(--grey); 
+      border-radius: 6px; 
+      font-size: var(--font-small); 
+    }
+  
+    .filtration__select { 
+      padding: 6px 8px; 
+      border: 1px solid var(--grey); 
+      border-radius: 6px; 
+      font-size: var(--font-small); 
+      cursor: pointer; 
+      height: 36px;
+    }
+  
+    #discounted { 
+      height: 36px; 
+      width: 36px; 
+      cursor: pointer; 
+      border-radius: 6px; 
+    }
+  
+    &__label { 
+      font-weight: var(--light-bold); 
+      font-size: var(--font-small); 
+      color: var(--txt-black); 
+      transition: all 0.4s ease-in-out; 
+    }
+  
+    
+    @media (max-width: 1000px) { 
+      flex-wrap: wrap; 
+      justify-content: center; 
+    }
+  
+    
+    @media (max-width: 768px) { 
+      flex-wrap: wrap; 
+      justify-content: flex-start; 
+      gap: var(--gap-medium); 
+  
+      &__price, 
+      &__discount { 
+        width: 48%; 
       }
-  }
-
-  &__discount {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-
-      input {
-          cursor: pointer;
-      }
-  }
-
-  &__sort {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-
-      .filtration__select {
-          padding: 6px 8px;
-          border: 1px solid #ddd;
-          border-radius: 4px;
-          font-size: 14px;
-          cursor: pointer;
-      }
-  }
-
-  #discounted {
-
-height: 26px;
-width: 26px;
-  }
-
-
-  &__label {
-      font-weight: 500;
-      font-size: 14px;
-      
-  }
-
-  @media (max-width: 768px) {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 16px;
-
-      &__price,
-      &__discount,
+  
       &__sort {
-          width: 100%;
+        width: 100%;  
       }
+    }
 
-      .filtration__input,
-      .filtration__select {
-          flex-grow: 1;
+    @media (max-width: 768px) { 
+      flex-wrap: wrap;
+        align-items: flex-start; 
+        gap: 12px; 
+    
+        &__price, 
+        &__discount {
+            gap: 16px;
+        }
+       
+        &__sort { 
+          width: 48%;
+        //   margin-top: 32px; 
+        }
+    
+        .filtration__input, 
+        .filtration__select { 
+          flex-grow: 1; 
+        }
+
+        .filtration__price {
+            gap: 16px;
+        }
+       
       }
+  
+    
+    @media (max-width: 480px) { 
+      flex-direction: column; 
+      align-items: flex-start; 
+      gap: 12px; 
+  
+      &__price, 
+      &__discount, 
+      &__sort { 
+        width: 100%; 
+      }
+  
+      .filtration__input, 
+      .filtration__select { 
+        flex-grow: 1; 
+      }
+    }
   }
-}
