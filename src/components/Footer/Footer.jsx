@@ -11,8 +11,7 @@ const Footer = () => {
       <footer className="footer">
         <div className="container">
           <div className="contact">
-            <h1 className='contact__title'>Contact</h1>
-
+            <h1 className='page-title'>Contact</h1>
              <ul className='contact-list'>
                 <li className='contact-list__item'>
                     <h3>Phone</h3>

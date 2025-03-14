@@ -4,7 +4,7 @@
 .footer {
     width: 100%;
     padding: 0 40px;
-    background-color: var(--background);
+    padding-bottom: 80px;
   }
   
 .container {
@@ -14,30 +14,23 @@
 }
   
 .contact {
-  
-    &__title {
-      font-size: 64px;
-      margin: 40px 0 20px 0;
-    }
 
     &-list {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 32px;
-      position: relative;    
+      grid-template-columns: 1fr .65fr;
+      gap: 32px; 
     
 
       &__item {
         background-color: var(--light-grey);
-        gap: 32px;
         border-radius: 12px;
-        padding: 32px 16px;
+        padding: 32px;
         width: 100%;
       
 
       a, p {
             color: var(--black);
-            font-size: 40px;
+            font-size: var(--font-large);
             font-weight: 600;
             padding-top: 10px;
             text-decoration: none;
@@ -45,7 +38,7 @@
           
       h3 {
         color: var(--grey);
-        font-size: 20px;
+        font-size: var(--font-medium);
         font-weight: 400;
 
         }
@@ -54,7 +47,7 @@
 
     .social-icons {
       display: flex;
-      gap: 12px;
+      gap: 16px;
     }
 
     .map__styles {
@@ -64,6 +57,4 @@
       border: none;
       border-radius: 12px;
     }
-
-
   }
