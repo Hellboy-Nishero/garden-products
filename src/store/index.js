@@ -8,7 +8,10 @@ const store = configureStore({
         theme: themeReducer,
         category: categoryReducer,
         filter: filterReducer
+        category: categoryReducer
     }
 })
+
+
 
 export default store;

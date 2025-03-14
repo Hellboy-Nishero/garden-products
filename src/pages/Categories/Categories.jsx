@@ -1,12 +1,12 @@
 import React from 'react';
 import "./categories.scss";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 
 const Categories = () => {
-    const categories = useSelector((state) => state.category.categories);
 
+    const { categories } = useSelector((state) => state.category);
 
     return (
         <div className='categories'>
@@ -14,24 +14,17 @@ const Categories = () => {
                 <Breadcrumbs />
                 <h2 className="page-title">Categories</h2>
                 <div className="categories__list">
-                    {categories && categories.map((category) => (
-                        <Link
-                        key={category.id} 
-                        to={`/categories/${category.name}`}
-                        className='category-card'>
+                    {categories.map((category) => (
+                        <Link key={category.id} to={`/categories/${category.title}`} className="category-card">
                             {category.image && (
-                                <img 
-                                    src={category.image} 
-                                    alt={category.name} 
+                                <img
+                                    src={`https://exam-server-5c4e.onrender.com${category.image}`}
+                                    alt={category.title}
                                     className="category-card__image"
                                 />
                             )}
-                         
-                            <span className="category-card__link">
-                                {category.name}
-                            </span>
+                            <span className="category-card__link">{category.title}</span>
                         </Link>
-
                     ))}
                 </div>
             </div>
@@ -39,4 +32,4 @@ const Categories = () => {
     );
 };
 
-export default Categories;
+export default Categories;    

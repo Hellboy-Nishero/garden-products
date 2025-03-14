@@ -99,7 +99,11 @@
     .nav-right{
         display: flex;
         align-items: center;
+<<<<<<< HEAD
         gap: var(--gap-big);
+=======
+        gap: 24px;
+>>>>>>> origin/irina
         .icon-item{
             position: relative;
             .count{
@@ -116,6 +120,22 @@
                 font-size: 11px;
                 font-weight: var(--light-bold);
                 color: var(--txt-white);
+<<<<<<< HEAD
+=======
+            }
+        }
+        .icon{
+            color: var(--txt-black);
+            width: 48px;
+            height: 48px;
+            stroke-width: 1px;
+            cursor: pointer;
+            transition: all .3s ease-in-out;
+            fill: var(--background);
+            &:hover{
+                fill: var(--black);
+                color: var(--txt-white);
+>>>>>>> origin/irina
             }
         }
         .burger{
@@ -141,7 +161,10 @@
             transition: all .4s ease-in-out;
             display: flex;
             justify-content: flex-end;
+<<<<<<< HEAD
             z-index: 999;
+=======
+>>>>>>> origin/irina
             &.open{
                 opacity: 1;
                 visibility: visible;
@@ -192,6 +215,13 @@
         }
         .nav-right{
             gap: 11px;
+<<<<<<< HEAD
+=======
+            .icon{
+                width: 44px;
+                height: 44px;
+            }
+>>>>>>> origin/irina
         }
     }
 }
@@ -217,18 +247,29 @@
 @media screen and (max-width: 480px) {
     .navbar{
         padding: 12px 20px;
+<<<<<<< HEAD
         .nav-left{
             .logo{
                 width: 44px;
                 height: 44px;
             }
         }
+=======
+>>>>>>> origin/irina
         .nav-right{
             .icon-item{
                 .count{
                     width: 18px;
                     height: 18px;
                     font-size: 8px;
+<<<<<<< HEAD
+=======
+
+                }
+                .icon{
+                    width: 32px;
+                    height: 32px;
+>>>>>>> origin/irina
                 }
             }  
         }

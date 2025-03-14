@@ -1,22 +1,18 @@
 import React, { useEffect, useState } from "react";
-<<<<<<< HEAD
-import { useParams } from "react-router-dom";
-=======
-import { useParams } from "react-router";
->>>>>>> origin/nikita
+import { useParams, Link } from "react-router-dom";
 import Filtration from "../../components/Filtration/Filtration";
 import "./Category.scss";
 import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 import { useSelector } from "react-redux";
 import ProductList from '../../components/ProductList/ProductList';
 
-
 const Category = () => {
-  const { name } = useParams(); // Получаем `name` из URL
-  const [products, setProducts] = useState([]); // Все товары
-  const categories = useSelector(state => state.category.categories);
-  const category = categories.find((category) => category.name === name);
 
+  const { title } = useParams();
+  const [products, setProducts] = useState([]);
+  const categories = useSelector(state => state.category.categories);
+
+  const category = categories.find((category) => category.title === title)
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -31,7 +27,6 @@ const Category = () => {
         console.error("Error loading products:", err);
       }
     };
-
     fetchProducts();
   }, []);
 

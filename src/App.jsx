@@ -13,7 +13,9 @@ import Product from "./pages/Product/Product.jsx";
 import Category from './pages/Category/Category.jsx'
 
 
+
 function App() {
+
 
 
   return (
@@ -24,7 +26,7 @@ function App() {
             <Route path='/' element={<Layout />}>
               <Route index element={<Home />}/>
               <Route path='/categories' element={<Categories />} />
-              <Route path='/categories/:name' element={<Category />} />
+              <Route path='/categories/:title' element={<Category />} />
               <Route path='/all-products' element={<AllProducts />} /> 
               <Route path='/all-products/product' element={<Product />} />
               <Route path='/all-sales' element={<AllSales />} /> 

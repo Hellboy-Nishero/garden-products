@@ -8,7 +8,6 @@ const Layout = () => {
 
   const dark = useSelector(state => state.theme.isDark);
 
-
   return (
     <div className={`main-container ${dark ? "dark" : ""}`}>
         <Navbar />
