@@ -1,9 +1,12 @@
 import React from 'react'
 import "./Cart.scss";
+import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 
 const Cart = () => {
   return (
-    <>Cart</>
+    <div className='cart'>
+    <Breadcrumbs />
+    </div>
   )
 }
 

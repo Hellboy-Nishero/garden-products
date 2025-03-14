@@ -1,0 +1,27 @@
+.not-found{
+    max-width: 1440px;
+    margin: 0 auto;
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    img{
+        max-width: 690px;
+        max-height: 270px;
+    }
+    .notFound__title{
+        font-weight: var(--bold);
+        font-size: 64px;
+        color: var(--txt-black);
+        text-align: center;
+    }
+    .notFound__text{
+        max-width: 760px;
+        font-weight: var(--normal);
+        font-size: var(--font-medium);
+        color: var(--txt-grey);
+        text-align: center;
+    }
+}
