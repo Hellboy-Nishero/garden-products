@@ -4,9 +4,7 @@
     position: relative;
     background-color: var(--white);
     transition: all .4s ease-in-out;
-
-
-    border-radius: 8px;
+    border-radius: var(--radius-big);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
@@ -15,12 +13,14 @@
 
     .discont-badge {
       position: absolute;
-      top: 10px;
-      left: 10px;
-      background-color: #ff7043;
-      color: white;
+      height: 34px;
+      width: 63px;
+      top: 16px;
+      left: 21px;
+      background-color: var(--sale);
+      color: var(--white);
       padding: 4px 8px;
-      font-size: 14px;
+      font-size: var(--font-medium);
       font-weight: bold;
       border-radius: 4px;
       text-align: center;
@@ -76,9 +76,10 @@
 
     .product-price {
       display: flex;
-      align-items: center;
+      align-items: baseline;
       gap: var(--gap-small);
       margin-top: 16px;
+      
 
       .current-price {
         font-size: var(--font-large);
@@ -87,9 +88,11 @@
       }
 
       .old-price {
-        font-size: var(--font-small);
+        font-size: var(--font-medium);
+        font-weight: var(--normal);
         color: var(--txt-grey);
         text-decoration: line-through;
+        
       }
     }
   }

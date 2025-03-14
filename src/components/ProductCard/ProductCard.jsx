@@ -6,7 +6,7 @@ const ProductCard = ({discont_price, image, title, price}) => {
   return (
     <div className="product-card">
     {discont_price && (
-      <div className="discont-badge">{Math.round((price - discont_price) / price*100)}%</div>
+      <div className="discont-badge">-{Math.round ((price - discont_price) / price * 100)}%</div>
     )}
         <img className="product-image" src={`https://exam-server-5c4e.onrender.com${image}`} alt={title} />
         
@@ -21,7 +21,7 @@ const ProductCard = ({discont_price, image, title, price}) => {
             <span className="current-price">${discont_price ? discont_price.toFixed(2) : price.toFixed(2)}</span>
             {discont_price && (
                 <span className="old-price">${price.toFixed(2)}</span>
-            )}
+            )}  
             </div>
         </div>
   </div>

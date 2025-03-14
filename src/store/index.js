@@ -7,7 +7,7 @@ const store = configureStore({
     reducer: {
         theme: themeReducer,
         category: categoryReducer,
-        filter: filterReducer
+        filter: filterReducer,
         category: categoryReducer
     }
 })

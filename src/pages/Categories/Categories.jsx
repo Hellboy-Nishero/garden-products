@@ -1,6 +1,10 @@
 import React from 'react';
 import "./categories.scss";
+<<<<<<< HEAD
 import { Link } from 'react-router-dom';
+=======
+import { Link, useNavigate } from 'react-router-dom';
+>>>>>>> origin/margorita
 import { useSelector } from 'react-redux';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 

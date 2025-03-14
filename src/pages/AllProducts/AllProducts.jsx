@@ -1,31 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import Filtration from '../../components/Filtration/Filtration';
-import './AllProducts.scss';
-import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
-import ProductList from '../../components/ProductList/ProductList';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts } from "../../store/api/productApi";  
+import Filtration from "../../components/Filtration/Filtration";
+import "./AllProducts.scss";
+import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
+import ProductList from "../../components/ProductList/ProductList";
 
 const AllProducts = () => {
-  const [products, setProducts] = useState([]);
-
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.products.products);  
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await fetch('https://exam-server-5c4e.onrender.com/products/all');
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        const data = await response.json();
-        setProducts(data);
-      } catch (err) {
-        console.error('Error loading products:', err);
-      }
-    };
+    if(products.length === 0){
+      dispatch(fetchProducts()); 
+    }    
+  }, [dispatch, products]);
   
-    fetchProducts();
-  }, []);
-  
-
   return (
     <div className="all-products">
       <Breadcrumbs />
