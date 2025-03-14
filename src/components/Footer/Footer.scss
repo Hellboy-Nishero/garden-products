@@ -2,28 +2,23 @@
 
 
 .footer {
-    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
     padding: 0 40px;
     padding-bottom: 80px;
   }
-  
-.container {
-  max-width: 1440px;
-  margin: 0 auto;
-  display: block;
-}
   
 .contact {
 
     &-list {
       display: grid;
       grid-template-columns: 1fr .65fr;
-      gap: 32px; 
+      gap: var(--gap-large); 
     
 
       &__item {
         background-color: var(--light-grey);
-        border-radius: 12px;
+        border-radius: var(--radius-big);
         padding: 32px;
         width: 100%;
       
@@ -31,7 +26,7 @@
       a, p {
             color: var(--black);
             font-size: var(--font-large);
-            font-weight: 600;
+            font-weight: var(--light-bold);
             padding-top: 10px;
             text-decoration: none;
           }
@@ -47,7 +42,7 @@
 
     .social-icons {
       display: flex;
-      gap: 16px;
+      gap: var(--gap-medium);
     }
 
     .map__styles {
@@ -55,6 +50,6 @@
       height: 360px;
       margin-top: 32px;
       border: none;
-      border-radius: 12px;
+      border-radius: var(--radius-big);
     }
   }

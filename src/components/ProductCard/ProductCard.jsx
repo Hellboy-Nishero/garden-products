@@ -2,11 +2,11 @@ import React from 'react';
 import "./ProductCard.scss";
 import {Heart, ShoppingBag} from 'lucide-react'
 
-const ProductCard = ({discont, image, title, price, oldPrice}) => {
+const ProductCard = ({discont_price, image, title, price}) => {
   return (
     <div className="product-card">
-    {discont && (
-      <div className="discont-badge">-{discont}%</div>
+    {discont_price && (
+      <div className="discont-badge">{Math.round((price - discont_price) / price*100)}%</div>
     )}
         <img className="product-image" src={`https://exam-server-5c4e.onrender.com${image}`} alt={title} />
         
@@ -18,9 +18,9 @@ const ProductCard = ({discont, image, title, price, oldPrice}) => {
         <div className='card_footer'>
             <h3 className="product-title">{title}</h3>
             <div className="product-price">
-            <span className="current-price">${price.toFixed(2)}</span>
-            {oldPrice && (
-                <span className="old-price">${oldPrice}</span>
+            <span className="current-price">${discont_price ? discont_price.toFixed(2) : price.toFixed(2)}</span>
+            {discont_price && (
+                <span className="old-price">${price.toFixed(2)}</span>
             )}
             </div>
         </div>

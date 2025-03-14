@@ -1,7 +1,7 @@
 .products-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 32px;
+    gap: var(--gap-large);
   }
 
   @media (max-width: 1000px) {
@@ -31,3 +31,12 @@
       gap: 16px;
     }
   }
+
+
+.products-empty{
+  font-size: var(--font-big);
+  font-weight: var(--light-bold);
+  text-decoration: underline;
+  grid-column: 1/5;
+  text-align: center;
+}

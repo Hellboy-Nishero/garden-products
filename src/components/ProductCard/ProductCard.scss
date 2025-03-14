@@ -23,6 +23,7 @@
       font-size: 14px;
       font-weight: bold;
       border-radius: 4px;
+      text-align: center;
     }
 
     .product-image {
@@ -38,7 +39,7 @@
       right: 10px;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: var(--gap-small);
 
       .icon {
         width: 48px;
@@ -58,8 +59,8 @@
     }
 
     .product-title {
-      font-size: 20px;
-      font-weight: 500;
+      font-size: var(--font-medium);
+      font-weight: var(--normal);
       color: var(--txt-black);
       margin: 0;
       overflow: hidden;
@@ -76,18 +77,18 @@
     .product-price {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: var(--gap-small);
       margin-top: 16px;
 
       .current-price {
-        font-size: 40px;
-        font-weight: 600;
+        font-size: var(--font-large);
+        font-weight: var(--light-bold);
         color: var(--txt-black);
       }
 
       .old-price {
-        font-size: 16px;
-        color: #888;
+        font-size: var(--font-small);
+        color: var(--txt-grey);
         text-decoration: line-through;
       }
     }

@@ -6,7 +6,6 @@ import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 
 const Categories = () => {
     const categories = useSelector((state) => state.category.categories);
-    const navigate = useNavigate(); 
 
 
     return (
@@ -18,10 +17,8 @@ const Categories = () => {
                     {categories && categories.map((category) => (
                         <Link
                         key={category.id} 
-                        to={`/categories/${category.name}`}>
-                        <div 
-                            className="category-card"
-                        >
+                        to={`/categories/${category.name}`}
+                        className='category-card'>
                             {category.image && (
                                 <img 
                                     src={category.image} 
@@ -33,7 +30,6 @@ const Categories = () => {
                             <span className="category-card__link">
                                 {category.name}
                             </span>
-                        </div>
                         </Link>
 
                     ))}

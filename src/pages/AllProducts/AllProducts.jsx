@@ -6,7 +6,7 @@ import ProductList from '../../components/ProductList/ProductList';
 
 const AllProducts = () => {
   const [products, setProducts] = useState([]);
-  const [filteredProducts, setFilteredProducts] = useState([]);
+
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -17,7 +17,6 @@ const AllProducts = () => {
         }
         const data = await response.json();
         setProducts(data);
-        setFilteredProducts(data);
       } catch (err) {
         console.error('Error loading products:', err);
       }
@@ -32,7 +31,7 @@ const AllProducts = () => {
       <Breadcrumbs />
       <h1 className="page-title">All products</h1>
       <Filtration discounted={true} />
-      <ProductList products={filteredProducts}/>
+      <ProductList products={products}/>
     </div>
   );
 };

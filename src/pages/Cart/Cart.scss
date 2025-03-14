@@ -1,3 +1,57 @@
+@import "../../index.scss";
+
 .cart{
     padding: 0 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    &-header{
+        padding-top: 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &::after{
+            content: "";
+            order: 2;
+            flex-grow: 1;
+            height: 1px;
+            background-color: var(--grey);
+
+        }
+
+        .page-title{
+            margin-bottom: 0;
+            position: relative;
+            padding-right: 32px;
+        }
+
+        .btn-back{
+            padding: 8px 16px !important;
+            border-color: var(--grey);
+            color: var(--txt-grey);
+            background-color: transparent;
+            order: 3;
+
+            &:hover{
+                background-color: var(--black);
+            }
+        }
+    }
+
+    &-empty{
+        font-weight: var(--normal);
+        font-size: var(--font-medium);
+        color: var(--txt-black);
+        transition: all .4s ease-in-out;
+    }
+    .btn-cart{
+        padding: 16px 56px !important;
+        align-self: flex-start;
+    }
+}
+
+@media screen and (max-width: 1000px){
+    .cart{
+        padding: 0 20px;
+    }
 }
