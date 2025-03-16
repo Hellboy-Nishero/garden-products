@@ -27,7 +27,7 @@ const Filtration = ({discounted}) => {
 
   return (
     <div className="filtration">
-    {/* Блок цены */}
+    {/* price section */}
     <div className="filtration__price">
         <span className="filtration__label">Price</span>
         <input
@@ -48,11 +48,11 @@ const Filtration = ({discounted}) => {
         />
     </div>
 
-    {/* Чекбокс скидок */}
+    {/* sales checkbox */}
     {
         discounted &&     
         <div className="filtration__discount">
-            <label htmlFor="discounted" className="filtration__label">
+            <label htmlFor="discounted" className="filtration__discount-label">
                 Discounted items
             </label>
             <input type="checkbox" id="discounted" onClick={handleToggleDiscount} defaultChecked={isChecked ? true : false}/>
@@ -61,7 +61,7 @@ const Filtration = ({discounted}) => {
     }
 
 
-    {/* Сортировка */}
+    {/* sorting */}
     <div className="filtration__sort">
         <span className="filtration__label">Sorted</span>
         <select className="filtration__select" name='sorted' onChange={(e) => changeInputHandler(e)} value={filterData.sorted}>

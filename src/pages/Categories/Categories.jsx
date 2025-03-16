@@ -1,16 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import "./categories.scss";
-<<<<<<< HEAD
 import { Link } from 'react-router-dom';
-=======
-import { Link, useNavigate } from 'react-router-dom';
->>>>>>> origin/margorita
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
+import { fetchCategories } from '../../store/api/category';
 
 const Categories = () => {
 
     const { categories } = useSelector((state) => state.category);
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        if(categories.length === 0){
+            dispatch(fetchCategories());
+        }
+    })
+
 
     return (
         <div className='categories'>

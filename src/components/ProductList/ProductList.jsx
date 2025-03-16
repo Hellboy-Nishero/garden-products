@@ -4,21 +4,21 @@ import ProductCard from '../ProductCard/ProductCard'
 import { useSelector } from 'react-redux';
 
 
-const ProductList = ({products}) => {
-
+const ProductList = ({products, sales}) => {
     const [filteredProducts, setFilteredProducts] = useState(products);
     const discounted = useSelector(state => state.filter.discountActive);
     const {minPrice, maxPrice, sorted} = useSelector(state => state.filter);
+    const currentProducts = sales ? products.filter(product => product.discont_price !== null) : products; //if sales = true, it shows products with sales only. Otherwise it shows all products (for "all sales")
   
     const filterProducts = () => {
-      let filtered = products;
+      let filtered = currentProducts;
       
       if(discounted){
-        filtered = filtered.filter(product => product.discont_price !== null); // Фильтруем скидочные товары
+        filtered = filtered.filter(product => product.discont_price !== null); // filter products with sale
       }
   
       filtered = filtered.filter(product => {
-        const price = product.discont_price ?? product.price; // Берём скидочную цену, если есть
+        const price = product.discont_price ?? product.price; // set sale price if given
         return price > minPrice && price < maxPrice;
       })
   
@@ -26,20 +26,20 @@ const ProductList = ({products}) => {
         const getPrice = product => product.discont_price ?? product.price;
         switch(sorted){
   
-        //сортировка по возрастанию цены
+        //sort by price from low to high
           case "price-asc":
               return getPrice(a) - getPrice(b);
     
-          //сортировка по уменьшению цены
+          //sort by price from high to low
           case "price-desc":
               return getPrice(b) - getPrice(a);
     
-          //сортировка по наибольшей скидке
+          //sort by biggest sale
           case "discount":
             const aSale = a.discont_price ? Math.round((a.price - a.discont_price) / a.price * 100) : 0;
             const bSale = b.discont_price ? Math.round((b.price - b.discont_price) / b.price * 100) : 0;
   
-            //показываем "а" раньше, если у него есть скидка
+            //shows "a" earlier, if it has sale
             if (a.discont_price && !b.discont_price) return -1;
             if (!a.discont_price && b.discont_price) return 1;
             return bSale - aSale;

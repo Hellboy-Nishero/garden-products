@@ -1,0 +1,112 @@
+.modalWindow{
+    position: fixed;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .4s ease-in-out;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.shown{
+    opacity: 1;
+    visibility: visible;
+    width: 100%;
+    height: 100%;
+    background-color: #00000050;
+}
+
+.productContainer{
+    max-width: 550px;
+    background-color: var(--green);
+    border-radius: var(--radius-big);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-medium);
+    &__header{
+        display: flex;
+        justify-content: space-between;
+        .dailyProduct__title{
+            font-size: var(--font-large);
+            color: var(--txt-white);
+            font-weight: var(--light-bold);
+        }
+        .icon{
+            color: var(--white);
+            &:hover{
+                color: #f45757;
+            }
+        }
+    }
+    .dailyProduct{
+        background-color: var(--white);
+        border-radius: var(--radius-big);
+        position: relative;
+
+        &__image{
+            border-radius: var(--radius-big) var(--radius-big) 0 0;
+            display: block;
+            width: 100%;
+            object-fit: cover;
+            height: 284px;
+            border-bottom: 1px solid var(--grey);
+        }
+
+        &__header{
+            position: absolute;
+            padding: 16px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            top: 0;
+            left: 0;
+        }
+        &__discount{
+            background-color: var(--sale);
+            color: var(--txt-white);
+            padding: 4px 8px;
+            align-self: center;
+            border-radius: var(--radius-small);
+            font-size: var(--font-medium);
+            font-weight: var(--light-bold);
+        }
+
+        &__footer{
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            padding: 16px;
+        }
+
+        &__name{
+            font-size: var(--font-medium);
+            color: var(--txt-black);
+            font-weight: var(--normal);
+        }
+        &__prices{
+            display: flex;
+            gap: 16px;
+            align-items: flex-end;
+        }
+        &__current-price{
+            font-weight: var(--light-bold);
+            font-size: var(--font-large);
+            color: var(--txt-black);
+        }
+        &__old-price{
+            text-decoration: line-through;
+            color: var(--txt-grey);
+            font-size: var(--font-medium);
+            font-weight: var(--normal);
+        }
+    }
+}
+
+.btn-daily{
+    border: none !important;
+}

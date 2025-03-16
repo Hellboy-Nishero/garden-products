@@ -2,27 +2,26 @@ import React, { useEffect, useState } from 'react'
 
 const Breadcrumbs = () => {
 
-    const url = window.location.pathname;
+    const url = window.location.pathname; //get url like "/categories/nursery";
 
-    const pathArray = url.split("/").filter(Boolean);
+    const pathArray = url.split("/").filter(Boolean); //separate paths into links
 
-    const [width, setWidth] = useState(window.innerWidth);
+    const [width, setWidth] = useState(window.outerWidth);
+
 
     useEffect(() => {
-      const handleResize = () => setWidth(window.innerWidth);
+      const resizeHandler = () => {setWidth(window.outerWidth)};
+      window.addEventListener("resize", resizeHandler);
+      return () => {window.removeEventListener("resize", resizeHandler)}
 
-      window.addEventListener("resize", () => handleResize);
-
-      return() => window.removeEventListener("resize", () => handleResize)
-
-    }, [])
+    }, []);
 
 
 
   return (
     <>
     {
-      width > 480 ? 
+      width > 767 && 
       <div className='breadcrumbs'>
       <div className="breadcrumbs__item">Main page</div>
       {
@@ -31,8 +30,7 @@ const Breadcrumbs = () => {
           )
       }
       </div>
-      : null
-    };
+    }
     </>
   )
 }

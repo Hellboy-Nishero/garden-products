@@ -1,104 +1,104 @@
-@import "../../index.scss"; 
-
 .filtration { 
   display: flex; 
   align-items: center; 
-  gap: var(--gap-big); 
   margin-bottom: 24px; 
-  flex-wrap: nowrap; 
+  gap: 40px;
+  flex-wrap: wrap;
 
   &__price, 
   &__discount, 
   &__sort { 
     display: flex; 
     align-items: center; 
-    gap: var(--gap-small); 
+    gap: var(--gap-medium); 
   }
-
-
-  &__price {
-    width: 309px;
-    margin-right: 40px;
-  } 
-  &__discount {
-    width: 234px;
-    margin-right: 40px;
-  }
-  &__sort {
-    width: 285px;
-  }
-
 
 
   .filtration__input { 
-    width: 112px; 
-    height: 36px;
-    padding: 6px 8px; 
-    border: 1px solid var(--grey); 
+    max-width: 112px;
+    padding: 8px 16px; 
+    border: 1px solid var(--grey-divider); 
     border-radius: 6px; 
     font-size: var(--font-small); 
+    outline: none;
+    &::-webkit-inner-spin-button, ::-webkit-outer-spin-button{
+      -webkit-appearance: none;
+    }
   }
 
   .filtration__select { 
-    padding: 6px 8px; 
-    border: 1px solid var(--grey); 
+    padding: 8px 16px; 
+    border: 1px solid var(--grey-divider); 
     border-radius: 6px; 
     font-size: var(--font-small); 
     cursor: pointer; 
-    height: 36px;
+    outline: none;
   }
 
   #discounted { 
     height: 36px; 
     width: 36px; 
     cursor: pointer; 
-    border-radius: 6px; 
+    opacity: 0;
+    transition: all .4s ease-in-out;
   }
 
   &__label { 
     font-weight: var(--light-bold); 
-    font-size: var(--font-small); 
+    font-size: var(--font-medium); 
     color: var(--txt-black); 
     transition: all 0.4s ease-in-out; 
   }
 
-  
-  @media (max-width: 1000px) { 
-    flex-wrap: wrap; 
-    justify-content: center; 
+  .filtration__discount-label{
+    font-weight: var(--light-bold); 
+    font-size: var(--font-medium); 
+    color: var(--txt-black); 
+    cursor: pointer;
+    position: relative;
+    &::before{
+      content: "";
+      position: absolute;
+      right: calc(-20px - var(--gap-medium));
+      top: 50%;
+      transform: translate(50%, -50%);
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--grey-divider);
+      background-color: #fff;
+      border-radius: var(--radius-small);
+    }
+    &::after{
+      content: "✓";
+      position: absolute;
+      right: calc(-20px - var(--gap-medium));
+      top: 50%;
+      transform: translate(50%, -50%);
+      font-size: var(--font-large);
+      color: var(--green);
+      opacity: 0;
+      visibility: hidden;
+      transition: all .3s ease-in-out;
+    }
   }
-
-  
-  @media (max-width: 768px) { 
-    flex-wrap: wrap; 
-    justify-content: flex-start; 
-    gap: var(--gap-medium); 
-
-    &__price, 
-    &__discount { 
-      width: 48%; 
-    }
-
-    &__sort {
-      width: 100%;  
-    }
+  .filtration__discount:has(#discounted:checked) .filtration__discount-label::after{
+    opacity: 1;
+    visibility: visible;
   }
-
   
-  @media (max-width: 480px) { 
-    flex-direction: column; 
-    align-items: flex-start; 
-    gap: 12px; 
+}
 
-    &__price, 
-    &__discount, 
-    &__sort { 
-      width: 100%; 
-    }
+@media (max-width: 768px) { 
+  .filtration{
+    gap: 32px;
+  }
+}
 
-    .filtration__input, 
-    .filtration__select { 
-      flex-grow: 1; 
-    }
+
+@media (max-width: 480px) { 
+
+  .filtration__input, 
+  .filtration__select { 
+    flex-grow: 1; 
   }
 }

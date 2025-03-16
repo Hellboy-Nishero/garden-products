@@ -1,5 +1,3 @@
-@import "../../index.scss";
-
 .product-card {
     position: relative;
     background-color: var(--white);
@@ -13,16 +11,14 @@
 
     .discont-badge {
       position: absolute;
-      height: 34px;
-      width: 63px;
       top: 16px;
       left: 21px;
       background-color: var(--sale);
       color: var(--white);
       padding: 4px 8px;
       font-size: var(--font-medium);
-      font-weight: bold;
-      border-radius: 4px;
+      font-weight: var(--light-bold);
+      border-radius: var(--radius-small);
       text-align: center;
     }
 
@@ -91,8 +87,7 @@
         font-size: var(--font-medium);
         font-weight: var(--normal);
         color: var(--txt-grey);
-        text-decoration: line-through;
-        
+        text-decoration: line-through;    
       }
     }
   }

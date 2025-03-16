@@ -1,20 +1,13 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "../../store/api/productApi";  
+import { useSelector } from "react-redux";
 import Filtration from "../../components/Filtration/Filtration";
 import "./AllProducts.scss";
 import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 import ProductList from "../../components/ProductList/ProductList";
 
 const AllProducts = () => {
-  const dispatch = useDispatch();
-  const products = useSelector((state) => state.products.products);  
+  const products = useSelector((state) => state.products.currentProducts);  
 
-  useEffect(() => {
-    if(products.length === 0){
-      dispatch(fetchProducts()); 
-    }    
-  }, [dispatch, products]);
   
   return (
     <div className="all-products">

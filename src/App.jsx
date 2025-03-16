@@ -1,5 +1,5 @@
 import {BrowserRouter, Routes, Route} from 'react-router'
-import { Provider } from 'react-redux';
+import { Provider} from 'react-redux';
 import store from './store';
 import Home from './pages/Home/Home.jsx'
 import Layout from './pages/Layout.jsx'
@@ -15,7 +15,6 @@ import Category from './pages/Category/Category.jsx'
 
 
 function App() {
-
 
 
   return (
