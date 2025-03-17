@@ -17,8 +17,11 @@ const Layout = () => {
     if(products.length === 0){
       dispatch(fetchProducts()); 
     }
-    dispatch(initDailyProduct());
-    dispatch(initCurrentProducts());
+    if(products.length > 0){
+      dispatch(initDailyProduct());
+      dispatch(initCurrentProducts());
+    }
+    
   }, [dispatch, products]);
 
 
