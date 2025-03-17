@@ -247,3 +247,66 @@
         }
     }
 }
+
+
+@media screen and (max-width: 1000px) {
+    .navbar{
+        padding: 30px 20px;
+        .nav-left{
+            .logo{
+                width: 68px;
+                height: 68px;
+            }
+        }
+        .nav-mid{
+            .links{
+                gap: 24px;
+            }
+        }
+        .nav-right{
+            gap: 11px;
+            .icon{
+                width: 44px;
+                height: 44px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px){
+    .navbar{
+        .nav-left{
+            .switch{
+                width: 52.5px;
+                height: 28px;
+                .slider{
+                    &::before{
+                        width: 24.5px;
+                        height: 24.5px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+    .navbar{
+        padding: 12px 20px;
+        .nav-right{
+            .icon-item{
+                .count{
+                    width: 18px;
+                    height: 18px;
+                    font-size: 8px;
+
+                }
+                .icon{
+                    width: 32px;
+                    height: 32px;
+                }
+            }  
+        }
+    }
+}
