@@ -1,14 +1,18 @@
-import React from "react";
+import React from 'react'
+import "./Home.scss";
 import Banner from "./components/HomeBanner.jsx";
 import HomeDiscount from "./components/HomeDiscount.jsx";
-
-const MainPage = () => {
+import Categories from './components/Categories.jsx';
+import HomeSale from "./components/HomeSale.jsx"
+const Home = () => {
   return (
     <>
-      <Banner />
+      <Banner />  
+      <Categories/>
       <HomeDiscount />
+      <HomeSale />
     </>
   );
 };
 
-export default MainPage;
+export default Home

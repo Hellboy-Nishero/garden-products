@@ -1,0 +1,104 @@
+.filtration { 
+  display: flex; 
+  align-items: center; 
+  margin-bottom: 24px; 
+  gap: 40px;
+  flex-wrap: wrap;
+
+  &__price, 
+  &__discount, 
+  &__sort { 
+    display: flex; 
+    align-items: center; 
+    gap: var(--gap-medium); 
+  }
+
+
+  .filtration__input { 
+    max-width: 112px;
+    padding: 8px 16px; 
+    border: 1px solid var(--grey-divider); 
+    border-radius: 6px; 
+    font-size: var(--font-small); 
+    outline: none;
+    &::-webkit-inner-spin-button, ::-webkit-outer-spin-button{
+      -webkit-appearance: none;
+    }
+  }
+
+  .filtration__select { 
+    padding: 8px 16px; 
+    border: 1px solid var(--grey-divider); 
+    border-radius: 6px; 
+    font-size: var(--font-small); 
+    cursor: pointer; 
+    outline: none;
+  }
+
+  #discounted { 
+    height: 36px; 
+    width: 36px; 
+    cursor: pointer; 
+    opacity: 0;
+    transition: all .4s ease-in-out;
+  }
+
+  &__label { 
+    font-weight: var(--light-bold); 
+    font-size: var(--font-medium); 
+    color: var(--txt-black); 
+    transition: all 0.4s ease-in-out; 
+  }
+
+  .filtration__discount-label{
+    font-weight: var(--light-bold); 
+    font-size: var(--font-medium); 
+    color: var(--txt-black); 
+    cursor: pointer;
+    position: relative;
+    &::before{
+      content: "";
+      position: absolute;
+      right: calc(-20px - var(--gap-medium));
+      top: 50%;
+      transform: translate(50%, -50%);
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--grey-divider);
+      background-color: #fff;
+      border-radius: var(--radius-small);
+    }
+    &::after{
+      content: "✓";
+      position: absolute;
+      right: calc(-20px - var(--gap-medium));
+      top: 50%;
+      transform: translate(50%, -50%);
+      font-size: var(--font-large);
+      color: var(--green);
+      opacity: 0;
+      visibility: hidden;
+      transition: all .3s ease-in-out;
+    }
+  }
+  .filtration__discount:has(#discounted:checked) .filtration__discount-label::after{
+    opacity: 1;
+    visibility: visible;
+  }
+  
+}
+
+@media (max-width: 768px) { 
+  .filtration{
+    gap: 32px;
+  }
+}
+
+
+@media (max-width: 480px) { 
+
+  .filtration__input, 
+  .filtration__select { 
+    flex-grow: 1; 
+  }
+}
