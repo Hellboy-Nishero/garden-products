@@ -43,6 +43,12 @@ const ProductList = ({products, sales}) => {
             if (a.discont_price && !b.discont_price) return -1;
             if (!a.discont_price && b.discont_price) return 1;
             return bSale - aSale;
+
+          //sort alphabetically
+          case "alphabet":
+            if(a.title < b.title) return -1;
+            if(a.title > b.title) return 1;
+            return 0;
   
           default:
             return 0;
@@ -65,7 +71,8 @@ const ProductList = ({products, sales}) => {
       discont_price={product.discont_price}
       image={product.image}
       title={product.title}
-      price={product.price} />
+      price={product.price}
+      product={product} />
     )
   )
   : <p className='products-empty'>No products found</p>

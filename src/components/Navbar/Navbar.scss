@@ -1,5 +1,3 @@
-@import "../../index.scss";
-
 .discount__title{
     padding: 6px 16px !important;
     background-color: var(--green);
@@ -168,6 +166,9 @@
                     position: absolute;
                     top: 12px;
                     right: 20px;
+                    &:hover{
+                        color: #e73434;
+                    }
                 }
                 .link{
                     text-decoration: none;
@@ -196,11 +197,6 @@
             .logo{
                 width: 68px;
                 height: 68px;
-            }
-        }
-        .nav-mid{
-            .links{
-                gap: 24px;
             }
         }
         .nav-right{

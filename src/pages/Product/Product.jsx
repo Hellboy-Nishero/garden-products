@@ -1,128 +1,181 @@
 import "./Product.scss";
 import React from "react";
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { Heart } from 'lucide-react';
+import { useState, useEffect} from "react";
+import { Heart, Plus, Minus } from 'lucide-react';
 import Button from '../../components/Button/Button'
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
+import { addToCart } from "../../store/slices/cartSlice";
+import { toggleLike } from "../../store/slices/favoriteSlice";
 
 function Product() {
-  const { id } = useParams();
+  const { productTitle } = useParams();
+  const { currentProducts} = useSelector(state => state.products);
+  const product = currentProducts.find(product => product.title === productTitle);
   const [readMore, setReadMore] = useState(false);
-  let [count, setCount] = useState(1);
-  let [modal, setModal] = useState(false);
-  const { product,  loading } = useSelector((state) => state.products);
-
+  const [count, setCount] = useState(1);
+  const [modal, setModal] = useState(false);
+  const likedProducts = useSelector(state => state.favorite.liked);
+  const [isProductLiked, setIsProductLiked] = useState(false);
   
   const dispatch = useDispatch();
 
-  const styleDescription = {
-    display: "-webkit-box",
-    WebkitBoxOrient: "vertical",
-    WebkitLineClamp: readMore ? "unset" : 3, // Показывает 3 строки, если readMore = false
-    overflow: "hidden",
-  };
+  const [width, setWidth] = useState(window.innerWidth);
+
 
   const openText = () => {
     setReadMore(!readMore);
   };
 
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
   const counterIncrement = () => {
-    setCount(++count);
+    setCount(prevCount => prevCount + 1);
   };
   const counterDecrement = () => {
-    if (count > 0) {
-      setCount(--count);
+    if (count > 1) {
+      setCount(prevCount => prevCount - 1);
     }
   };
-  const openModal = () => setModal(true);
-  const closeModal = () => setModal(false);
+
+  const toggleModal = () => setModal(!modal);
 
   const getSalePercent = (discountPrice, currentPrice) => {
-    return Math.ceil(100 - discountPrice / (currentPrice / 100));
+    return Math.round(100 - discountPrice / (currentPrice / 100));
   };
+
+  const addProduct = (product) => {
+    dispatch(addToCart({...product, count: count}));
+  }
+
+  const toggleLikeProduct = (product) => {
+    setIsProductLiked(!isProductLiked);
+    dispatch(toggleLike(product));
+  }
 
   const salePercent = getSalePercent(product?.discont_price, product?.price);
 
+
+
+  useEffect(() => {
+    const resizeHandler = () => setWidth(window.innerWidth);
+
+    window.addEventListener("resize", resizeHandler);
+
+    return () => window.removeEventListener("resize", resizeHandler);
+
+  }, [])
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    if(product !== undefined){
+
+      setIsProductLiked(likedProducts.some(likedProduct => likedProduct.id === product.id));
+    }
+  }, [product]);
+
+
+  if(!product){
+    return <div>Loading...</div>
+  }
+
   return (
-     <div className="container__product">
-        <div className="container__box">
-  
-         {product && (
-          <div key={product?.id} className="item__box">
-            <div className="title__heart">
-              <h3 className="title">{product?.title}</h3>
-              <img className="heart" src={Heart} alt="" />
+    <div className="product">
+      <Breadcrumbs />
+      <div key={product.id} className="product__container">
+        {
+          width <= 480 &&
+          <div className="product__header">
+          <h3 className="product__title">{product.title}</h3>
+          <Heart className={`icon ${isProductLiked ? "liked" : ""}`} onClick={() => toggleLikeProduct(product)} />
+        </div>
+        }
+        <div className="image__container">
+          <img
+            onClick={toggleModal}
+            className="product__image"
+            src={`https://exam-server-5c4e.onrender.com/${product.image}`}
+            alt=""
+          />
+        </div>
+        <div
+          onClick={toggleModal}
+          className={modal ? "modal__container__img" : "close__window"}
+        >
+          <img
+            className="modal__window__img"
+            src={`https://exam-server-5c4e.onrender.com/${product.image}`}
+            alt=""
+          />
+        </div>
+        <div className="product__info">
+          {
+            width > 480 &&
+            <div className="product__header">
+            <h3 className="product__title">{product.title}</h3>
+            <Heart className={`icon ${isProductLiked ? "liked" : ""}`} onClick={() => toggleLikeProduct(product)} />
+          </div>
+          }
+
+          <div className="prices">
+            <span className="currentPrice">${product.discont_price ? product.discont_price.toFixed(2).replace(".", ",") : product.price.toFixed(2).replace(".", ",")}</span>
+            {
+              product.discont_price && 
+              <span className="oldPrice">${product.price.toFixed(2).replace(".", ",")}</span>
+            }
+            {
+              product.discont_price && 
+              <span className="sales-badge">-{salePercent}%</span>
+            }
+
+          </div>
+          <div className="counter__container">
+            <div className="counter__box">
+              <button onClick={counterDecrement} className="counter__btn"><Minus></Minus></button>
+              <input type="number" className="counter" value={count} readOnly />
+              <button onClick={counterIncrement} className="counter__btn"><Plus></Plus></button>
             </div>
-            <div className="product__box">
-              <img
-                onClick={openModal}
-                className="product__img"
-                src={`https://exam-server-5c4e.onrender.com/${product?.image}`}
-                alt=""
-              />
-              <div
-                onClick={closeModal}
-                className={modal ? "modal__container__img" : "close__window"}
-              >
-                <img
-                  className="modal__window__img"
-                  src={`https://exam-server-5c4e.onrender.com/${product?.image}`}
-                  alt=""
-                />
-              </div>
-                <div className="info__container">
-                  <div className="title__heart">
-                    <h3 className="title">{product?.title}</h3>
-  
-                    <Heart
-                      className="heart"
-                    />
-  
-                  </div>
-                  <div className="price__container">
-                      <p className="price">
-                        ${((product?.discont_price || product?.price) * count).toFixed(2)}
-                      </p>
-                      {product?.discont_price && (
-                        <>
-                          <p className="discount__price">${(product.price * count).toFixed(2)}</p>
-                          <div className="sale">-${salePercent}%</div>
-                        </>
-                      )}
-                    </div>
-                    <p>{product?.price_discont}</p>
-                      <div className="counter__container">
-                        <div className="counter__box">
-                          <button onClick={counterDecrement} className="counter__btn">-</button>
-                          <span>{count}</span>
-                          <button onClick={counterIncrement} className="counter__btn">+</button>
-                        </div>
-                      
-                        <Button  onClick={() => addToCart(product)}
-                          className="add__to">
-                          Add to cart
-                        </Button>
-                      </div>
-                      <div className="description__container">
-                        <h5>Description</h5>
-                        <p style={styleDescription} className="description">{product?.description}</p>
-                        <p className="read__more" onClick={openText}>Read more</p>
-                      </div>
-                </div>
-              </div>
+          
+            <Button  onClick={() => addProduct(product)}
+              className="add__to">
+              Add to cart
+            </Button>
+          </div>
+          {
+            width > 768 &&
+              <div className="description__container">
+              <h4 className="description__title">Description</h4>
+              <p className="description">{product.description.length  > 200 && !readMore ? `${product.description.slice(0, 200)}...` : product.description}</p>
+          {
+            product.description.length > 200 && (
+              <p className="read__more" onClick={openText}>{readMore ? "Show Less" : "Read more"}</p>
+            )
+          }
             </div>
-         )}
+          }
+        </div>
       </div>
-     </div>
+      {
+          width <= 768 &&
+          <div className="description__container">
+          <h4 className="description__title">Description</h4>
+          <p className="description">{product.description.length  > 200 && !readMore ? `${product.description.slice(0, 200)}...` : product.description}</p>
+          {
+            product.description.length > 200 && (
+              <p className="read__more" onClick={openText}>{readMore ? "Show Less" : "Read more"}</p>
+            )
+          }
+        </div>
+        }
+    </div>
     );
   }
 
 
 export default Product;
+
+
+
+
+

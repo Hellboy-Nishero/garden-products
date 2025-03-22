@@ -7,7 +7,7 @@ import ProductCard from "../../../components/ProductCard/ProductCard"
 
 const RandomSale = () => {
   const { currentProducts } = useSelector((state) => state.products);
-  const products = currentProducts.filter(products => products.discont_price !== null )
+  const products = currentProducts.filter(product => product.discont_price !== null )
 
   const getRandomProducts = (filteredProducts, count) => {
     return filteredProducts && filteredProducts.length > 0
@@ -32,7 +32,7 @@ const RandomSale = () => {
         <div className="container__list">
           {productsRandom &&
             productsRandom.map((product) => (
-              <ProductCard key={product.id} discont_price={product.discont_price} image={`${product.image}`} title={product.title} price={product.price}/>
+              <ProductCard key={product.id} discont_price={product.discont_price} image={`${product.image}`} title={product.title} price={product.price} product={product}/>
             ))}
         </div>
         <div className="container__btn-2-position">

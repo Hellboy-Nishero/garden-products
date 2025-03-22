@@ -2,6 +2,11 @@
     display: flex;
     flex-direction: column;
     gap: 32px;
+    &:hover{
+      .categoryCard__title{
+        color: var(--green);
+      }
+    }
   
     &__image img {
       display: block;
@@ -17,6 +22,8 @@
       line-height: 26px;
       align-items: center;
       text-align: center;
+      color: var(--txt-black);
+      transition: all .3s ease-in-out;
   
       @media (max-width: 480px) {
         &__title {

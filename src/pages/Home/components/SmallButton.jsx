@@ -1,21 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./SmallButton.scss";
+import Button from "../../../components/Button/Button";
 const SmallButton = ({
   title = "",
   className = "",
   children,
-  path = "",
-  ...props
+  path = ""
 }) => {
   return (
     <div className="smallButton">
       <h2 className="smallButton__title">{title}</h2>
       <div className="smallButton__btn-line"></div>
       <Link to={path}>
-        <button className={`smallButton__btn-small ${className} `} {...props}>
+        <Button type={"secondary"} className={`smallButton__btn-small ${className} `}>
           {children}
-        </button>
+        </Button>
       </Link>
     </div>
   );

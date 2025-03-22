@@ -13,7 +13,7 @@ const Categories = () => {
   );
 
   return (
-    <div className="categories">
+    <div className="categories-home">
       <div className="container">
         <div className="container__position">
           <SmallButton

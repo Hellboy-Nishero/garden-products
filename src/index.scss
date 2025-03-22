@@ -27,12 +27,22 @@
     --gap-small: 8px;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 *{
     margin: 0;
     padding: 0;
     list-style: none;
     box-sizing: border-box;
     font-family: montserrat;
+}
+
+body{
+    &.modal-open{
+        overflow: hidden;
+    }
 }
 
 .main-container{
@@ -90,7 +100,7 @@
         border: 1px solid var(--txt-green);
         background-color: var(--green);
         &:hover{
-            color: var(--txt-black);
+            color: var(--green);
             border-color: var(--black);
             background-color: var(--light-grey);
         }

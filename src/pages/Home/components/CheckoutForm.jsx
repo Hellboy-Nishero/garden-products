@@ -7,8 +7,6 @@ import Button from "../../../components/Button/Button"
 
 function CheckoutForm({
     sendingdiscount,
-    classInput,
-    classBtn,
   }) {
     const dispatch = useDispatch();
     
@@ -32,7 +30,7 @@ function CheckoutForm({
             })}
             type="text"
             placeholder="Name"
-            className={`${classInput} input`}
+            className={`input`}
           />
           {errors?.name && (
             <p className="error__message">{errors.name?.message}</p>
@@ -46,7 +44,7 @@ function CheckoutForm({
             })}
             type="number"
             placeholder="Phone number"
-            className={`${classInput} input`}
+            className={`input`}
           />
           {errors?.number && (
             <p className="error__message">{errors.number?.message}</p>
@@ -62,14 +60,14 @@ function CheckoutForm({
             })}
             type="email"
             placeholder="Email"
-            className={`${classInput} input`}
+            className={`input`}
           />
           {errors?.email && (
             <p className="error__message">{errors.email?.message}</p>
           )}
           {sendingdiscount ?
           <Button type={"submitted"} /> :
-          <Button className={`${classBtn} btn`}>
+          <Button type={"secondary"}>
             Get a discount 
           </Button> }
         </label>

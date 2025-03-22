@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import "./Navbar.scss";
-import { NavLink, Link } from 'react-router';
+import { NavLink, Link} from 'react-router';
 import { Heart, Moon, ShoppingBag, Sun, X } from 'lucide-react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toggleTheme } from '../../store/slices/themeSlice';
 import Button from '../Button/Button';
 import { showDailyProduct } from '../../store/slices/productSlice';
@@ -11,11 +11,15 @@ import { showDailyProduct } from '../../store/slices/productSlice';
 
 const Navbar = () => {
 
-    const [width, setWidth] = useState(window.outerWidth);
+    const [width, setWidth] = useState(window.innerWidth);
 
     const [isOpen, setIsOpen] = useState(false);
 
     const dispatch = useDispatch();
+
+    const cartCounter = useSelector(state => state.cart.count);
+
+    const likedCounter = useSelector(state => state.favorite.count);
 
     // toggles dark-mode after click
     const toggleThemeHandler = () => {
@@ -29,7 +33,7 @@ const Navbar = () => {
     }
 
     useEffect(() => {
-        const resizeHandler = () => setWidth(window.outerWidth);
+        const resizeHandler = () => setWidth(window.innerWidth);
         window.addEventListener("resize", resizeHandler);
 
         return () => {window.removeEventListener("resize", resizeHandler)}
@@ -63,11 +67,17 @@ const Navbar = () => {
             <div className="nav-right">
                 <div className="icon-item">
                     <Link to={"/favorites"}><Heart className='icon' /></Link>
-                    <span className="count">1</span>
+                    {
+                        likedCounter !== 0 &&
+                        <span className='count'>{likedCounter}</span>
+                    }
                 </div>
                 <div className="icon-item">
                     <Link to={"/cart"}><ShoppingBag className='icon' /></Link>
-                    <span className="count">10</span>
+                    {
+                        cartCounter !== 0 &&
+                        <span className='count'>{cartCounter}</span>
+                    }
                 </div>
                 {width < 768 &&
                 <>

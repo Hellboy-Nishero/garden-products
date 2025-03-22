@@ -1,37 +1,36 @@
 .smallButton {
     max-width: 1440px;
-    justify-content: space-around;
     align-items: center;
-    display: contents;
+    display: flex;
+    width: 100%;
   
     &__title {
-      font-size: 64px;
-      font-weight: 700;
-      padding: 0 auto 40px;
+      font-size: var(--font-title);
+      font-weight: var(--bold);
       margin-bottom: 40px;
+      color: var(--txt-black);
     }
   
     &__btn-line {
-      border-top: 1px solid #dddddd;
+      border-top: 1px solid var(--grey-divider);
       flex-grow: 1;
       margin-bottom: 30px;
       margin-left: 10px;
     }
   
     &__btn-small {
-      font-weight: 500;
-      font-size: 16px;
+      font-weight: var(--normal);
+      font-size: var(--font-small);
       padding: 8px 16px;
-      border: 1px solid #dddddd;
-      border-radius: 6px;
-      background-color: #fffff1;
       cursor: pointer;
       margin-bottom: 30px;
-      color:  #8b8b8b;
+      background-color: transparent;
+      border-color: var(--grey-divider);
+      color:  var(--txt-grey);
   
       &:hover {
-        background-color:  #92a234;
-        color:  #ffffff;
+        background-color:  var(--black);
+        color: var(--txt-grey);
       }
     }
     @media (max-width: 768px) {
