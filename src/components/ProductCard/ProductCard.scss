@@ -1,30 +1,24 @@
-@import "../../index.scss";
-
 .product-card {
     position: relative;
     background-color: var(--white);
     transition: all .4s ease-in-out;
-    width: 316px;
-    height: 422px;
-    border-radius: var (--radius-small);
+    border-radius: var(--radius-big);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 20px;
     overflow: hidden;
 
     .discont-badge {
       position: absolute;
-      height: 34px;
-      width: 63px;
       top: 16px;
       left: 21px;
       background-color: var(--sale);
       color: var(--white);
       padding: 4px 8px;
       font-size: var(--font-medium);
-      font-weight: bold;
-      border-radius: 4px;
+      font-weight: var(--light-bold);
+      border-radius: var(--radius-small);
       text-align: center;
     }
 
@@ -41,7 +35,7 @@
       right: 10px;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: var(--gap-small);
 
       .icon {
         width: 48px;
@@ -57,6 +51,15 @@
           color: var(--txt-white)
         }
 
+        &.liked{
+          fill: var(--green);
+          color: var(--txt-black);
+          &:hover{
+            fill: var(--light-grey);
+            color: var(--green);
+          }
+        }
+
       }
     }
 
@@ -68,6 +71,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      max-width: 252px;
     }
 
     .card_footer {
@@ -79,8 +83,9 @@
     .product-price {
       display: flex;
       align-items: baseline;
-      gap: 8px;
+      gap: var(--gap-small);
       margin-top: 16px;
+      flex-wrap: wrap;
       
 
       .current-price {
@@ -93,8 +98,7 @@
         font-size: var(--font-medium);
         font-weight: var(--normal);
         color: var(--txt-grey);
-        text-decoration: line-through;
-        
+        text-decoration: line-through;    
       }
     }
   }

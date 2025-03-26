@@ -1,48 +1,47 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createSlice } from "@reduxjs/toolkit";
+import { fetchCategories } from "../api/category"; 
+
+const getStoredCategories = () => {
+    const storedCategories = localStorage.getItem("categories");
+    return storedCategories ? JSON.parse(storedCategories) : [];
+};
 
 const initialState = {
-    categories: [
-        {
-            id: 1,
-            name: "Fertilizer",
-            image: "/src/pages/Categories/images/fertilizer.png",
-            link: "/category/fertilizer",
-          },
-          {
-            id: 2,
-            name: "Protective products and septic tanks",
-            image: "/src/pages/Categories/images/planting-material.png",
-            link: "/category/protective-products",
-          },
-          {
-            id: 3,
-            name: "Planting material",
-            image: "/src/pages/Categories/images/protective-products.png",
-            link: "/category/planting-material",
-          },
-          {
-            id: 4,
-            name: "Tools and equipment",
-            image: "/src/pages/Categories/images/tools-equipment.png",
-            link: "/category/tools-equipment",
-          },
-          {
-            id: 5,
-            name: "Pots and planters",
-            image: "/src/pages/Categories/images/pots-and-planters.png",
-            link: "/category/pots-and-planters",
-          },
-    ],
-}
-const categoriesSlice = createSlice({
+    categories: getStoredCategories(),  
+    status: "idle",
+    error: null
+};
+
+const categorySlice = createSlice({
     name: "category",
     initialState,
     reducers: {
-        setCategories: (state, action) => {
-            state.categories = action.payload;
+      
+        initCategoriesFromLocalStorage: (state) => {
+            state.categories = getStoredCategories();
+        
         }
-    }
-})
+    },
+    extraReducers: (builder) => {
+        builder
+            .addCase(fetchCategories.pending, (state) => {
+                state.status = "loading";
+            })
+            .addCase(fetchCategories.fulfilled, (state, action) => {
+                state.status = "succeeded";
+                state.categories = action.payload;
 
-export const { setCategories } = categoriesSlice.actions;
-export default categoriesSlice.reducer;
+                // ✅ Сохраняем загруженные категории в `localStorage`
+                localStorage.setItem("categories", JSON.stringify(action.payload));
+            })
+            .addCase(fetchCategories.rejected, (state, action) => {
+                state.status = "failed";
+                state.error = action.payload;
+            });
+    }
+});
+
+export const { initCategoriesFromLocalStorage } = categorySlice.actions;
+
+export default categorySlice.reducer;
+

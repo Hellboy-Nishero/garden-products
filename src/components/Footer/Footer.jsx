@@ -9,7 +9,6 @@ const Footer = () => {
 
     return (
       <footer className="footer">
-        <div className="container">
           <div className="contact">
             <h1 className='page-title'>Contact</h1>
              <ul className='contact-list'>
@@ -48,8 +47,6 @@ const Footer = () => {
                  referrerPolicy="no-referrer-when-downgrade"/>
             </div>
           </div>
-        </div>
-
     </footer >
     )
 }

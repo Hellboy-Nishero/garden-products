@@ -1,0 +1,41 @@
+.categoryCard {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    &:hover{
+      .categoryCard__title{
+        color: var(--green);
+      }
+    }
+  
+    &__image img {
+      display: block;
+      height: 350px;
+      border-radius: 12px;
+      width: 100%;
+      object-fit: cover;
+    }
+  
+    &__title {
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 26px;
+      align-items: center;
+      text-align: center;
+      color: var(--txt-black);
+      transition: all .3s ease-in-out;
+  
+      @media (max-width: 480px) {
+        &__title {
+          font-size: 18px;
+          line-height: 23, 4px;
+        }
+      }
+  
+      @media (max-width: 360px) {
+        &__title {
+          font-size: 40px;
+        }
+      }
+    }
+  }

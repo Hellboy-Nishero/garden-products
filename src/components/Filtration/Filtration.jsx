@@ -1,113 +1,84 @@
-// import React from 'react'
-// import "./Filtration.scss";
-
-
-// const Filtration = ({discounted}) => {
-//   return (
-//     <div className="filtration">
-    
-//     <div className="filtration__price">
-//         <span className="filtration__label">Price</span>
-//         <input
-//             type="number"
-//             className="filtration__input"
-//             placeholder="from"
-//         />
-//         <input
-//             type="number"
-//             className="filtration__input"
-//             placeholder="to"
-//         />
-//     </div>
-//     {
-//         discounted &&     
-//         <div className="filtration__discount">
-//             <label htmlFor="discounted" className="filtration__label">
-//                 Discounted items
-//             </label>
-//             <input type="checkbox" id="discounted" />
-//         </div>
-
-//     }
-//     <div className="filtration__sort">
-//         <span className="filtration__label">Sorted</span>
-//         <select className="filtration__select">
-//             <option value="default">by default</option>
-//             <option value="price-asc">price (low to high)</option>
-//             <option value="price-desc">price (high to low)</option>
-//             <option value="discount">biggest discount</option>
-//         </select>
-//     </div>
-// </div>
-
-//   )
-// }
-// export default Filtration
-
-
-
-
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react'
+import "./Filtration.scss";
 import { useDispatch, useSelector } from 'react-redux';
-import { setFilters } from '../../store/slices/productSlice';
-import './Filtration.scss';
+import { applyFilter, toggleDiscount } from '../../store/slices/filterSlice';
 
-const Filtration = ({ discounted }) => {
-  const dispatch = useDispatch();
-  const filters = useSelector(state => state.products.filters);
-  
-  const [priceFrom, setPriceFrom] = useState(filters.priceFrom);
-  const [priceTo, setPriceTo] = useState(filters.priceTo);
-  const [sort, setSort] = useState(filters.sort);
-  const [discount, setDiscount] = useState(filters.discounted);
+// Filtration component responsible for filtering and sorting products
+const Filtration = ({discounted}) => {
+    const dispatch = useDispatch();
+    
+    // Get the discount filter state from Redux store
+    const isChecked = useSelector(state => state.filter.discountActive);
+    
+    // Local state to manage filter data, initialized with values from Redux store
+    const [filterData, setFilterData] = useState(useSelector(state => state.filter))
 
-  useEffect(() => {
-    dispatch(setFilters({ priceFrom, priceTo, sort, discounted: discount }));
-  }, [priceFrom, priceTo, sort, discount, dispatch]);
+    // Toggles the discount filter in Redux store
+    const handleToggleDiscount = () => {
+        dispatch(toggleDiscount());
+    }
+    
+    // Updates local filter state when input values change
+    const changeInputHandler = (e) => {
+        setFilterData(prev => ({...prev, [e.target.name]: e.target.value }));
+    }
+
+    // Applies filters whenever the filterData state is updated
+    useEffect(() => {
+        dispatch(applyFilter(filterData));
+    }, [filterData]);
+
 
   return (
     <div className="filtration">
-      <div className="filtration__price">
+    {/* price filter section */}
+    <div className="filtration__price">
         <span className="filtration__label">Price</span>
         <input
-          type="number"
-          className="filtration__input"
-          placeholder="from"
-          value={priceFrom}
-          onChange={(e) => setPriceFrom(e.target.value)}
+            type="number"
+            className="filtration__input"
+            name="minPrice"
+            placeholder="from"
+            value={filterData.minPrice}
+            onChange={(e) => changeInputHandler(e)}
         />
         <input
-          type="number"
-          className="filtration__input"
-          placeholder="to"
-          value={priceTo}
-          onChange={(e) => setPriceTo(e.target.value)}
+            type="number"
+            className="filtration__input"
+            name='maxPrice'
+            placeholder="to"
+            value={filterData.maxPrice}
+            onChange={(e) => changeInputHandler(e)}
         />
-      </div>
-
-      {discounted && (
-        <div className="filtration__discount">
-          <label htmlFor="discounted" className="filtration__label">Discounted items</label>
-          <input
-            type="checkbox"
-            id="discounted"
-            checked={discount}
-            onChange={(e) => setDiscount(e.target.checked)}
-          />
-        </div>
-      )}
-
-      <div className="filtration__sort">
-        <span className="filtration__label">Sorted</span>
-        <select className="filtration__select" value={sort} onChange={(e) => setSort(e.target.value)}>
-          <option value="default">by default</option>
-          <option value="price-asc">price (low to high)</option>
-          <option value="price-desc">price (high to low)</option>
-          <option value="discount">biggest discount</option>
-        </select>
-      </div>
     </div>
-  );
-};
 
-export default Filtration;
+    {/* Checkbox for filtering discounted items */}
+    {
+        discounted &&     
+        <div className="filtration__discount">
+            <label htmlFor="discounted" className="filtration__discount-label">
+                Discounted items
+            </label>
+            <input type="checkbox" id="discounted" onClick={handleToggleDiscount} defaultChecked={isChecked ? true : false}/>
+        </div>
+
+    }
+
+
+    {/* Sorting dropdown */}
+    <div className="filtration__sort">
+        <span className="filtration__label">Sorted</span>
+        <select className="filtration__select" name='sorted' onChange={(e) => changeInputHandler(e)} value={filterData.sorted}>
+            <option value="default">by default</option>
+            <option value="price-asc">price (low to high)</option>
+            <option value="price-desc">price (high to low)</option>
+            <option value="discount">biggest discount</option>
+            <option value="alphabet">alphabetically</option>
+        </select>
+    </div>
+</div>
+
+  )
+}
+
+export default Filtration

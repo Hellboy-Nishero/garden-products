@@ -1,38 +1,25 @@
-// import { createAsyncThunk } from '@reduxjs/toolkit';
+import { createAsyncThunk } from '@reduxjs/toolkit'; // Import the createAsyncThunk function from Redux Toolkit to handle asynchronous actions
 
-
-// export const fetchProducts = createAsyncThunk(
-//   'products/fetchProducts',
-//   async () => {
-//     const response = await fetch('https://exam-server-5c4e.onrender.com/products/all');
-//     if (!response.ok) {
-//       throw new Error(`HTTP error! Status: ${response.status}`);
-//     }
-//     const data = await response.json();
-//     return data;
-//   }
-// );
-
-
-import { createAsyncThunk } from '@reduxjs/toolkit';
-
+// Define the fetchProducts async action using createAsyncThunk
 export const fetchProducts = createAsyncThunk(
+  // The first argument is the action type, which follows the pattern 'sliceName/actionName'
   'products/fetchProducts',
-  async () => {
-    // Проверяем, есть ли кэшированные данные
-    const cachedData = localStorage.getItem('products');
-    if (cachedData) {
-      return JSON.parse(cachedData); // Если есть — возвращаем
-    }
 
-    // Если данных нет — запрашиваем с сервера
-    const response = await fetch('https://exam-server-5c4e.onrender.com/products/all');
+   // The second argument is an asynchronous function that fetches data from the API
+  async () => {
+    // Send a GET request to the API endpoint to fetch all products
+      const response = await fetch('https://exam-server-5c4e.onrender.com/products/all');
+    
+    // Check if the response status is OK (status code 200–299)
     if (!response.ok) {
+      // If not, throw an error with the HTTP status code
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
-    const data = await response.json();
 
-    // Сохраняем в localStorage перед возвратом
+    // Parse the JSON data from the response
+    const data = await response.json();
+   
+     // Store the fetched products in localStorage for future access (serialized as a JSON string)
     localStorage.setItem('products', JSON.stringify(data));
     
     return data;

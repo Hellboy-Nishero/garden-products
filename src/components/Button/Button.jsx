@@ -27,7 +27,7 @@ const Button = ({children, type, onClick, className}) => {
                 )
 
             default: return (
-                <button className={`btn btn-primary ${className? className : ""}`}>{children}</button>
+                <button className={`btn btn-primary ${className? className : ""}`} onClick={onClick}>{children}</button>
             )
         }
     }

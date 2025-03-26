@@ -1,3 +1,277 @@
 .cart{
     padding: 0 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    .btn-back{
+        padding: 8px 16px !important;
+        border-color: var(--grey);
+        color: var(--txt-grey);
+        background-color: transparent;
+        order: 3;
+
+        &:hover{
+            background-color: var(--black);
+        }
+    }
+    &-header{
+        padding-top: 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &::after{
+            content: "";
+            order: 2;
+            flex-grow: 1;
+            height: 1px;
+            background-color: var(--grey);
+
+        }
+
+        .page-title{
+            margin-bottom: 0;
+            position: relative;
+            padding-right: 32px;
+        }
+    }
+
+    &-empty{
+        font-weight: var(--normal);
+        font-size: var(--font-medium);
+        color: var(--txt-black);
+        transition: all .4s ease-in-out;
+    }
+    .btn-cart{
+        padding: 16px 56px !important;
+        align-self: flex-start;
+    }
+
+    &__content{
+        display: grid;
+        grid-template-columns: 60% 40%;
+        gap: var(--gap-large);
+    }
+
+    &__items{
+        display: flex;
+        flex-direction: column;
+        gap: var(--gap-medium);
+        max-height: 600px;
+        overflow: hidden;
+        overflow-y: scroll;
+    }
+
+    &__product{
+        display: grid;
+        grid-template-columns: 30% 70%;
+        border: 1px solid var(--grey-divider);
+        border-radius: var(--radius-big);
+        background-color: var(--white);
+    }
+
+    &__product-left{
+        width: 100%;
+        border-right: 1px solid var(--grey-divider);
+
+        .cart__image{
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            border-radius: var(--radius-big) 0 0 var(--radius-big);
+        }
+    }
+
+    &__product-right{
+        display: flex;
+        padding: 32px;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 12px;
+    }
+
+
+    &__product-header{
+        display: flex;
+        justify-content: space-between;
+        .icon{
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+            &:hover{
+                color: #f14040;
+            }
+        }
+    }
+
+    &__product-title{
+        font-size: var(--font-medium);
+        font-weight: var(--normal);
+        color: var(--txt-black);
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    &__product-footer{
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: var(--gap-large);
+    }
+
+    &__product-controlls{
+        display: flex;
+        border: 1px solid var(--grey-divider);
+        border-radius: var(--radius-big);
+    }
+
+    &__controll-btn{
+        border: 1px solid var(--grey-divider);
+        border-radius: var(--radius-big);
+        padding: 17px;
+        background: none;
+        cursor: pointer;
+        color: var(--txt-grey);
+        transition: all .4s ease-in-out;
+        &:hover{
+            color: var(--txt-black);
+        }
+    }
+
+    &__counter{
+        background: none;
+        outline: none;
+        border: none;
+        text-align: center;
+        max-width: 90px;
+        color: var(--txt-black);
+        font-weight: var(--light-bold);
+        font-size: var(--font-medium);
+        &::-webkit-inner-spin-button, ::-webkit-outer-spin-button{
+            -webkit-appearance: none;
+        }
+    }
+
+    &__prices{
+        display: flex;
+        gap: var(--gap-medium);
+        .price{
+            font-weight: var(--light-bold);
+            font-size: var(--font-large);
+            color: var(--txt-black);
+        }
+        .oldPrice{
+            align-self: flex-end;
+            font-weight: var(--normal);
+            font-size: var(--font-medium);
+            color: var(--txt-grey);
+            text-decoration: line-through;
+        }
+    }
+
+    &__form{
+        display: flex;
+        flex-direction: column;
+        padding: 32px;
+        background-color: var(--light-grey);
+        border-radius: var(--radius-big);
+        gap: var(--gap-big);
+    }
+
+    &__form-title{
+        font-size: var(--font-large);
+        color: var(--txt-black);
+    }
+
+    &__form-info{
+        display: flex;
+        flex-direction: column;
+        gap: var(--gap-big);
+    }
+
+    &__form-counter, &__form-price{
+        font-size: var(--font-large);
+        font-weight: var(--normal);
+        color: var(--txt-grey);
+    }
+
+    &__form-price{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__totalPrice{
+        font-size: var(--font-title);
+        color: var(--txt-black);
+        font-weight: var(--bold);
+    }
+
+    &__form-inputs{
+        display: flex;
+        flex-direction: column;
+        gap: var(--gap-medium);
+    }
+
+}
+
+
+.message__container{
+    max-width: 548px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-big);
+    background-color: var(--green);
+    border-radius: var(--radius-big);
+    padding: 32px;
+    color: var(--txt-white);
+    .message-header{
+        display: flex;
+        justify-content: space-between;
+        .icon{
+            color: var(--txt-white);
+            stroke-width: 2px;
+            &:hover{
+                color: #f14040;
+            }
+        }
+        .message-title{
+             font-size: var(--font-large);
+             font-weight: var(--light-bold);
+        }
+    }
+    .message{
+        font-size: var(--font-medium);
+        font-weight: var(--light-bold);
+    }
+}
+
+@media screen and (max-width: 1000px){
+    .cart{
+        padding: 0 20px;
+
+        &__content{
+            grid-template-columns: 50% 50%;
+        }
+    }
+}
+
+
+@media (max-width: 768px){
+    .cart{
+        &__content{
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}
+
+
+@media (max-width: 360px){
+    .cart{
+        &__counter{
+            max-width: 60px;
+        }
+    }
 }
