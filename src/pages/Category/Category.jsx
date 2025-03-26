@@ -4,53 +4,28 @@ import Filtration from "../../components/Filtration/Filtration";
 import "./Category.scss";
 import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 import { useSelector } from "react-redux";
-
 import ProductList from '../../components/ProductList/ProductList';
 
 const Category = () => {
-
+  // Get category title from URL params
   const { title } = useParams();
-
-  const [products, setProducts] = useState([]);
-  const [filteredProducts, setFilteredProducts] = useState([]);
+  // Get all products from Redux store
+  const products = useSelector(state => state.products.currentProducts);
+  // Get all categories from Redux store
   const categories = useSelector(state => state.category.categories);
-
-  const category = categories.find((category) => category.title === title)
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await fetch("https://exam-server-5c4e.onrender.com/products/all");
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        const data = await response.json();
-
-        setProducts(data);
-      } catch (err) {
-        console.error("Error loading products:", err);
-      }
-    };
-    fetchProducts();
-  }, []);
-
-  useEffect(() => {
-
-    const filtered = products.filter((product) => product.categoryId === category.id);
-    setFilteredProducts(filtered);
-  }, [products, title]);
-
-
+  // Find current category by title
+  const category = categories.find((category) => category.title === title);
+  // Filter products that belong to this category
+  const currentProducts = products.filter(product => product.categoryId === category.id);
 
   return (
     <div className="category">
       <Breadcrumbs />
-      <h1 className="page-title">{category ? category.title : "Category Not Found"}</h1>
-
+      <h1 className="page-title">{category ? category.name : "Category Not Found"}</h1>
       <Filtration discounted={true} />
-
-     
-      <ProductList products={filteredProducts} />
+      <div className="category__list">
+        <ProductList products={currentProducts} />
+      </div>
     </div>
   );
 };
