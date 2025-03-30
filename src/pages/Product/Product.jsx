@@ -10,45 +10,74 @@ import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 import { addToCart } from "../../store/slices/cartSlice";
 import { toggleLike } from "../../store/slices/favoriteSlice";
 
+<<<<<<< HEAD
 function Product() {
   const { productTitle } = useParams();
   const { currentProducts} = useSelector(state => state.products);
   const product = currentProducts.find(product => product.title === productTitle);
+=======
+function Product() {         
+  // Get product title from URL parameters
+  const { productTitle } = useParams();
+
+  // Retrieve products from Redux store
+  const { currentProducts} = useSelector(state => state.products);
+  const product = currentProducts.find(product => product.title === productTitle);
+
+  // State variables
+>>>>>>> origin/karina
   const [readMore, setReadMore] = useState(false);
   const [count, setCount] = useState(1);
   const [modal, setModal] = useState(false);
   const likedProducts = useSelector(state => state.favorite.liked);
   const [isProductLiked, setIsProductLiked] = useState(false);
   
+  // Initialize the Redux dispatch function to trigger actions
   const dispatch = useDispatch();
+  
+  const [width, setWidth] = useState(window.innerWidth);
 
+<<<<<<< HEAD
   const [width, setWidth] = useState(window.innerWidth);
 
 
+=======
+  // Toggle description text expansion
+>>>>>>> origin/karina
   const openText = () => {
     setReadMore(!readMore);
   };
 
+<<<<<<< HEAD
 
+=======
+  // Increment product count
+>>>>>>> origin/karina
   const counterIncrement = () => {
     setCount(prevCount => prevCount + 1);
   };
+
+  // Decrement product count
   const counterDecrement = () => {
     if (count > 1) {
       setCount(prevCount => prevCount - 1);
     }
   };
 
+  // Toggle image modal
   const toggleModal = () => setModal(!modal);
 
+  // Calculate discount percentage
   const getSalePercent = (discountPrice, currentPrice) => {
     return Math.round(100 - discountPrice / (currentPrice / 100));
   };
 
+  // Add product to cart
   const addProduct = (product) => {
     dispatch(addToCart({...product, count: count}));
   }
 
+  // Toggle product like status
   const toggleLikeProduct = (product) => {
     setIsProductLiked(!isProductLiked);
     dispatch(toggleLike(product));
@@ -57,7 +86,7 @@ function Product() {
   const salePercent = getSalePercent(product?.discont_price, product?.price);
 
 
-
+  // Handle window resize
   useEffect(() => {
     const resizeHandler = () => setWidth(window.innerWidth);
 
@@ -67,6 +96,7 @@ function Product() {
 
   }, [])
 
+  // Scroll to top on product load and update like status
   useEffect(() => {
     window.scrollTo(0, 0);
     if(product !== undefined){
@@ -75,7 +105,7 @@ function Product() {
     }
   }, [product]);
 
-
+  // Display loading message if product is not found
   if(!product){
     return <div>Loading...</div>
   }
@@ -84,6 +114,8 @@ function Product() {
     <div className="product">
       <Breadcrumbs />
       <div key={product.id} className="product__container">
+
+         {/* Display header only on small screens */}
         {
           width <= 480 &&
           <div className="product__header">
@@ -91,6 +123,8 @@ function Product() {
           <Heart className={`icon ${isProductLiked ? "liked" : ""}`} onClick={() => toggleLikeProduct(product)} />
         </div>
         }
+
+         {/* Product image */}
         <div className="image__container">
           <img
             onClick={toggleModal}
@@ -99,6 +133,8 @@ function Product() {
             alt=""
           />
         </div>
+
+            {/* Modal window for enlarged image */}
         <div
           onClick={toggleModal}
           className={modal ? "modal__container__img" : "close__window"}
@@ -109,6 +145,8 @@ function Product() {
             alt=""
           />
         </div>
+
+        {/* Product details */}
         <div className="product__info">
           {
             width > 480 &&
@@ -118,6 +156,7 @@ function Product() {
           </div>
           }
 
+           {/* Pricing */}
           <div className="prices">
             <span className="currentPrice">${product.discont_price ? product.discont_price.toFixed(2).replace(".", ",") : product.price.toFixed(2).replace(".", ",")}</span>
             {
@@ -130,6 +169,8 @@ function Product() {
             }
 
           </div>
+
+          {/* Quantity Selector & Add to Cart Button */}
           <div className="counter__container">
             <div className="counter__box">
               <button onClick={counterDecrement} className="counter__btn"><Minus></Minus></button>
@@ -142,6 +183,8 @@ function Product() {
               Add to cart
             </Button>
           </div>
+
+           {/* Product Description */}
           {
             width > 768 &&
               <div className="description__container">
@@ -156,6 +199,8 @@ function Product() {
           }
         </div>
       </div>
+
+      {/* Description for smaller screens */}
       {
           width <= 768 &&
           <div className="description__container">

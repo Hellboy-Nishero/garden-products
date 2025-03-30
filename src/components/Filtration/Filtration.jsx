@@ -6,6 +6,7 @@ import { applyFilter, toggleDiscount } from '../../store/slices/filterSlice';
 // Filtration component responsible for filtering and sorting products
 const Filtration = ({discounted}) => {
     const dispatch = useDispatch();
+<<<<<<< HEAD
     
     // Get the discount filter state from Redux store
     const isChecked = useSelector(state => state.filter.discountActive);
@@ -14,16 +15,31 @@ const Filtration = ({discounted}) => {
     const [filterData, setFilterData] = useState(useSelector(state => state.filter))
 
     // Toggles the discount filter in Redux store
+=======
+
+    const isChecked = useSelector(state => state.filter.discountActive);
+
+    const [filterData, setFilterData] = useState(useSelector(state => state.filter))
+
+
+>>>>>>> origin/karina
     const handleToggleDiscount = () => {
         dispatch(toggleDiscount());
     }
     
+<<<<<<< HEAD
     // Updates local filter state when input values change
+=======
+
+>>>>>>> origin/karina
     const changeInputHandler = (e) => {
         setFilterData(prev => ({...prev, [e.target.name]: e.target.value }));
     }
 
+<<<<<<< HEAD
     // Applies filters whenever the filterData state is updated
+=======
+>>>>>>> origin/karina
     useEffect(() => {
         dispatch(applyFilter(filterData));
     }, [filterData]);
