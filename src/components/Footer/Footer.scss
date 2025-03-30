@@ -1,6 +1,3 @@
-@import "../../index.scss";
-
-
 .footer {
     max-width: 1440px;
     margin: 0 auto;
@@ -9,7 +6,6 @@
   }
   
 .contact {
-
     &-list {
       display: grid;
       grid-template-columns: 1fr .65fr;
@@ -53,3 +49,27 @@
       border-radius: var(--radius-big);
     }
   }
+
+@media (max-width: 1000px){
+  .contact{
+    &-list{
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+}
+
+@media (max-width: 768px){
+  .contact{
+    &-list{
+      grid-template-columns: 1fr .3fr;
+    }
+  }
+}
+
+@media (max-width: 480px){
+  .contact{
+    &-list{
+      grid-template-columns: 1fr;
+    }
+  }
+}

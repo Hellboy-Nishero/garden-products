@@ -1,20 +1,7 @@
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
     gap: var(--gap-large);
-  }
-
-  @media (max-width: 768px) {
-    .products-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-
-  @media (max-width: 360px) {
-    .products-grid {
-      grid-template-columns: repeat(1, 1fr);
-    }
   }
 
 
@@ -24,4 +11,5 @@
   text-decoration: underline;
   grid-column: 1/5;
   text-align: center;
+  color: var(--txt-black);
 }

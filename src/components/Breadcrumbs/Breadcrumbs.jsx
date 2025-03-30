@@ -6,11 +6,11 @@ const Breadcrumbs = () => {
 
     const pathArray = url.split("/").filter(Boolean); //separate paths into links
 
-    const [width, setWidth] = useState(window.outerWidth);
+    const [width, setWidth] = useState(window.innerWidth);
 
 
     useEffect(() => {
-      const resizeHandler = () => {setWidth(window.outerWidth)};
+      const resizeHandler = () => {setWidth(window.innerWidth)};
       window.addEventListener("resize", resizeHandler);
       return () => {window.removeEventListener("resize", resizeHandler)}
 

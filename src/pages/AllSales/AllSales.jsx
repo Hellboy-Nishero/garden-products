@@ -12,6 +12,7 @@ const AllSales = () => {
   return (
     <div className='all-sales'>
     <Breadcrumbs />
+    <h1 className="page-title">All sales</h1>
     <Filtration />
     <ProductList products={products} sales={true} />
     </div>

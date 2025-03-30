@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "./DailyProduct.scss";
 import { useDispatch, useSelector } from 'react-redux';
-import { Heart } from 'lucide-react';
+import { Heart, X } from 'lucide-react';
 import Button from '../Button/Button';
-import { LuX } from 'react-icons/lu';
 import { closeDailyProduct } from '../../store/slices/productSlice';
+import { addToCart } from '../../store/slices/cartSlice';
 
 const DailyProduct = () => {
     const product = useSelector(state => state.products.dailyProduct);
@@ -15,13 +15,23 @@ const DailyProduct = () => {
         dispatch(closeDailyProduct())
     }
 
+    const handleAddToCart = () => {
+        dispatch(addToCart({...product, count: 1}));
+    }
+
+    useEffect(() => {
+        isActive 
+        ? document.body.classList.add("modal-open")
+        : document.body.classList.remove("modal-open"); 
+    }, [isActive])
+
 
   return (
     <div className={`modalWindow ${isActive ? "shown" : ""}`}>
         <div className="productContainer">
             <div className="productContainer__header">
                 <h2 className="dailyProduct__title">50% discount on product of the day!</h2>
-                <LuX className='icon' onClick={handleCloseWindow}/>
+                <X className='icon' onClick={handleCloseWindow}/>
             </div>
             <div className="dailyProduct">
                 <div className="dailyProduct__header">
@@ -38,7 +48,7 @@ const DailyProduct = () => {
                 </div>
             </div>
 
-            <Button type={"secondary"} className={"btn-daily"}>Add to cart</Button>
+            <Button type={"secondary"} className={"btn-daily"} onClick={handleAddToCart}>Add to cart</Button>
         </div>
     </div>
   )

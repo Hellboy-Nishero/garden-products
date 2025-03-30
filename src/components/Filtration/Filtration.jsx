@@ -69,6 +69,7 @@ const Filtration = ({discounted}) => {
             <option value="price-asc">price (low to high)</option>
             <option value="price-desc">price (high to low)</option>
             <option value="discount">biggest discount</option>
+            <option value="alphabet">alphabetically</option>
         </select>
     </div>
 </div>

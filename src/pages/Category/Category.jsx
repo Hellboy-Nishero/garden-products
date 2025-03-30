@@ -9,27 +9,10 @@ import ProductList from '../../components/ProductList/ProductList';
 const Category = () => {
 
   const { title } = useParams();
-  const [products, setProducts] = useState([]);
+  const products = useSelector(state => state.products.currentProducts);
   const categories = useSelector(state => state.category.categories);
-
-  const category = categories.find((category) => category.title === title)
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await fetch("https://exam-server-5c4e.onrender.com/products/all");
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        const data = await response.json();
-        setProducts(data.filter(product => product.categoryId === category.id));
-      } catch (err) {
-        console.error("Error loading products:", err);
-      }
-    };
-    fetchProducts();
-  }, []);
-
+  const category = categories.find((category) => category.title === title);
+  const currentProducts = products.filter(product => product.categoryId === category.id);
 
   return (
     <div className="category">
@@ -37,7 +20,7 @@ const Category = () => {
       <h1 className="page-title">{category ? category.name : "Category Not Found"}</h1>
       <Filtration discounted={true} />
       <div className="category__list">
-        <ProductList products={products} />
+        <ProductList products={currentProducts} />
       </div>
     </div>
   );

@@ -1,20 +1,20 @@
 import React from "react";
 import "./Categories.scss";
-import CategoryCard from "./CategoryCard";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import SmallButton from "./SmallButton";
+import CategoryCard from "../CategoryCard/CategoryCard";
+import { Link } from "react-router-dom"; // Importing Link for navigation
+import { useSelector } from "react-redux"; // Importing useSelector to access Redux state
+import SmallButton from "../Buttons/SmallButton"; // Importing custom SmallButton component
 
 const Categories = () => {
+  // Extracting category data from Redux state
   const categoriesState = useSelector(
-    //извлекаем данные из состояния хранилища
-    (state) => state.category.categories
-    //ф-ция (state) указывает useSelector, какую часть состояния нужно извлечь.
+    (state) => state.category.categories // Selecting categories from Redux store
   );
 
   return (
-    <div className="categories">
+    <div className="categories-home">
       <div className="container">
+        {/* Small button for navigating to the categories page */}
         <div className="container__position">
           <SmallButton
             path="/categories"
@@ -22,11 +22,15 @@ const Categories = () => {
             children={"All categories"}
           />
         </div>
+
+        {/* Displaying a limited number of category cards (first 4 items) */}
         <div className="container__list">
           {categoriesState.slice(0, 4).map((product) => (
             <CategoryCard key={product.id} {...product} />
           ))}
         </div>
+
+        {/* Button for viewing all categories */}
         <div className="container__btn-2-position">
           <Link to={`/categories`}>
             <button className="container__btn-2">All categories</button>
