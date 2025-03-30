@@ -10,12 +10,6 @@ import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 import { addToCart } from "../../store/slices/cartSlice";
 import { toggleLike } from "../../store/slices/favoriteSlice";
 
-<<<<<<< HEAD
-function Product() {
-  const { productTitle } = useParams();
-  const { currentProducts} = useSelector(state => state.products);
-  const product = currentProducts.find(product => product.title === productTitle);
-=======
 function Product() {         
   // Get product title from URL parameters
   const { productTitle } = useParams();
@@ -25,7 +19,6 @@ function Product() {
   const product = currentProducts.find(product => product.title === productTitle);
 
   // State variables
->>>>>>> origin/karina
   const [readMore, setReadMore] = useState(false);
   const [count, setCount] = useState(1);
   const [modal, setModal] = useState(false);
@@ -37,22 +30,12 @@ function Product() {
   
   const [width, setWidth] = useState(window.innerWidth);
 
-<<<<<<< HEAD
-  const [width, setWidth] = useState(window.innerWidth);
-
-
-=======
   // Toggle description text expansion
->>>>>>> origin/karina
   const openText = () => {
     setReadMore(!readMore);
   };
 
-<<<<<<< HEAD
-
-=======
   // Increment product count
->>>>>>> origin/karina
   const counterIncrement = () => {
     setCount(prevCount => prevCount + 1);
   };

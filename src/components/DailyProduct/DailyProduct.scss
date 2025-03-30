@@ -67,6 +67,16 @@
             justify-content: space-between;
             top: 0;
             left: 0;
+            .icon{
+                &.liked{
+                    fill: var(--green);
+                    color: var(--txt-black);
+                    &:hover{
+                      fill: var(--light-grey);
+                      color: var(--green);
+                    }
+                  }
+            }
         }
         &__discount{
             background-color: var(--sale);

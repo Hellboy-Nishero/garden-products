@@ -3,17 +3,13 @@ import { fetchProducts } from '../api/productApi'
 
 
 const initialState = {
-<<<<<<< HEAD
   // Array of products loaded from localStorage or an empty array if no data exists
-=======
->>>>>>> origin/karina
   products: JSON.parse(localStorage.getItem('products')) || [],  //original array of products from api
   dailyProduct: null,
   dailyProductActive: false,
   currentProducts: [] //copy of products with product of the day inserted
 };
 
-<<<<<<< HEAD
 // Create the product slice to manage the state of products
 const productSlice = createSlice({
   name: 'products',
@@ -24,15 +20,6 @@ const productSlice = createSlice({
       state.products = action.payload;
     },
     // Action to initialize the product of the day
-=======
-const productSlice = createSlice({
-  name: 'products',
-  initialState,
-  reducers: {
-    setProducts: (state, action) => {
-      state.products = action.payload;
-    },
->>>>>>> origin/karina
     initDailyProduct: (state) => {
       if(state.products.length !== 0){
         let newDailyProduct = {...state.products[Math.floor(Math.random()*state.products.length)]}; //search random product i nthe array
@@ -40,7 +27,6 @@ const productSlice = createSlice({
         state.dailyProduct = newDailyProduct;
       }
     },
-<<<<<<< HEAD
     // Action to activate the visibility of the product of the day
     showDailyProduct: (state) => {
       state.dailyProductActive = true;
@@ -58,32 +44,14 @@ const productSlice = createSlice({
       let index = state.currentProducts.findIndex(product => product.id === id);
       if(index !== -1){
         // Replace the product of the day at the found index
-=======
-    showDailyProduct: (state) => {
-      state.dailyProductActive = true;
-    },
-    closeDailyProduct: (state) => {
-      state.dailyProductActive = false;
-    },
-    initCurrentProducts: (state) => {
-      const { id } = state.dailyProduct; 
-      state.currentProducts = [...state.products];
-      let index = state.currentProducts.findIndex(product => product.id === id);
-      if(index !== -1){
->>>>>>> origin/karina
         state.currentProducts.splice(index, 1, state.dailyProduct);
       }
     }
   },
-<<<<<<< HEAD
   // Extra reducers to handle asynchronous actions
   extraReducers: (builder) => {
     builder.addCase(fetchProducts.fulfilled, (state, action) => {
       // When the fetch request is fulfilled, set the products data in the state
-=======
-  extraReducers: (builder) => {
-    builder.addCase(fetchProducts.fulfilled, (state, action) => {
->>>>>>> origin/karina
       state.products = action.payload;
       state.currentProducts = [...action.payload];
     })

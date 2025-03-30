@@ -3,7 +3,6 @@ import "./ProductList.scss";
 import ProductCard from '../ProductCard/ProductCard'
 import { useSelector } from 'react-redux';
 
-<<<<<<< HEAD
 // ProductList component displays a list of products with filtering and sorting functionality
 const ProductList = ({products, sales}) => {
     // State for storing filtered products
@@ -32,27 +31,6 @@ const ProductList = ({products, sales}) => {
       })
   
       // Sorting logic based on selected sorting criteria
-=======
-
-const ProductList = ({products, sales}) => {
-    const [filteredProducts, setFilteredProducts] = useState(products);
-    const discounted = useSelector(state => state.filter.discountActive);
-    const {minPrice, maxPrice, sorted} = useSelector(state => state.filter);
-    const currentProducts = sales ? products.filter(product => product.discont_price !== null) : products; //if sales = true, it shows products with sales only. Otherwise it shows all products (for "all sales")
-  
-    const filterProducts = () => {
-      let filtered = currentProducts;
-      
-      if(discounted){
-        filtered = filtered.filter(product => product.discont_price !== null); // filter products with sale
-      }
-  
-      filtered = filtered.filter(product => {
-        const price = product.discont_price ?? product.price; // set sale price if given
-        return price > minPrice && price < maxPrice;
-      })
-  
->>>>>>> origin/karina
       filtered.sort((a, b) => {
         const getPrice = product => product.discont_price ?? product.price;
         switch(sorted){
