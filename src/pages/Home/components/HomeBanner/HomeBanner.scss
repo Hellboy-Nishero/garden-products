@@ -2,16 +2,16 @@
   width: 100%;
   height: 600px;
   margin: 0 auto;
-  margin-bottom: 40px;
+  margin-bottom: 40px; // Adds spacing below the banner
 
   .content {
-    position: relative;
+    position: relative; // Positions content over the image
   }
 
   &__image {
     width: 100%;
     height: 600px;
-    object-fit: cover;
+    object-fit: cover; // Ensures the image covers the area without distortion
     display: block;
   }
 
@@ -22,21 +22,20 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    gap: 40px;
-    padding: 80px 40px;
-
+    gap: 40px; // Space between elements inside content
+    padding: 80px 40px; // Inner spacing
 
     .title {
-      font-size: 96px;
-      color: #ffffff;
-      
+      font-size: 96px; // Large title for desktop screens
+      color: #ffffff; // White text for contrast
 
       span {
-        display: inline-block;
+        display: inline-block; // Ensures proper spacing when wrapping
       }
     }
   }
 
+  // Responsive styles for smaller screens
   @media (max-width: 1000px) {
     &__content {
       .title {
@@ -64,7 +63,7 @@
   @media (max-width: 360px) {
     &__content {
       .title {
-        font-size: 48px;
+        font-size: 48px; // Smaller font size for very small screens
       }
     }
   }

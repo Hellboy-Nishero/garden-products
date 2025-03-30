@@ -8,14 +8,7 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 # myWork
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/margorita
-=======
-
->>>>>>> origin/karina
 -----------------------------------------------------------------------------------------------
 
 # Структура README для будущего работодателя
@@ -26,19 +19,10 @@ Currently, two official plugins are available:
 Garden Products — это веб-приложение, позволяющее пользователям просматривать товары, управлять ими, а также добавлять в корзину и избранное. В основе разработки лежат React и Redux для эффективного управления состоянием.
 Мобильная адаптивность: Стили в проекте разработаны с учетом адаптивного дизайна, что обеспечивает корректное отображение интерфейса на различных устройствах — от полноформатных мониторов ПК до планшетов и мобильных телефонов.
 
-<<<<<<< HEAD
 # Макет дизайна
 Макет проекта находится в Figma по ссылке:
 https://www.figma.com/file/SDNWLzCWkh9ZXdCpWEaByv/project-frontend?type=design&node-id=280-1136&mode=design&t=NJTGdloftvn8I6Vz-0 
 
-=======
-
-# Макет дизайна
-Вы можете ознакомиться с макетом проекта в Figma:
-https://www.figma.com/file/SDNWLzCWkh9ZXdCpWEaByv/project-frontend?type=design&node-id=280-1136&mode=design&t=NJTGdloftvn8I6Vz-0 
-
-
->>>>>>> origin/karina
 # Развернутая версия (deploy)
 Готовую версию приложения можно посмотреть по ссылке:
 Ссылка на сайт после того как задеплоим проект
@@ -46,20 +30,13 @@ https://www.figma.com/file/SDNWLzCWkh9ZXdCpWEaByv/project-frontend?type=design&n
 # Скриншот проекта
 ![Скриншот](./ссылка)
 
-<<<<<<< HEAD
 # Стек технологий
 React
 Redux / Redux Toolkit
-=======
-
-# Стек технологий
-Перечисление используемых технологий и для чего использовались (Никита, на тебя вся надежда)
->>>>>>> origin/karina
 
 
 # Авторы
 Проверьте правильность написания фио и дайде ссылку на линкедин
-<<<<<<< HEAD
 Никита Шевченко
 [ссылка на LinkedIn](https://www.linkedin.com/in/nikita-shevchenko-a8a832318/)
 Игорь Канурный
@@ -70,18 +47,6 @@ Redux / Redux Toolkit
 [ссылка на LinkedIn](https://www.linkedin.com/in/karina-myroshnychenko/)
 Маргарита Лихвар
 [ссылка на LinkedIn](https://www.linkedin.com/in/margarita-lykhvar-78910aab/)
-=======
-Nikita Shevchenko
-ссылка на LinkedIn
-Ihor 
-ссылка на LinkedIn
-Iryna Pokazachenko
-ссылка на LinkedIn
-Karina Myroshnychenko
-https://www.linkedin.com/in/karina-myroshnychenko-77653aab/
-Marharyta Lykhvar
-https://www.linkedin.com/in/margarita-lykhvar-78910aab/
->>>>>>> origin/karina
 
 
 
@@ -103,10 +68,6 @@ https://www.linkedin.com/in/margarita-lykhvar-78910aab/
    npm install
    ```
 
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/karina
 ## Запуск проекта
 
 1. Запустите локальный сервер разработки:
@@ -143,11 +104,17 @@ https://www.linkedin.com/in/margarita-lykhvar-78910aab/
 
 ## Функционал
 
+<<<<<<< HEAD
 ### Главная страница (ФИО реализующего)
 >>>>>>> origin/karina
+=======
+### Главная страница (Ihor Kanurnyi)
+Реализована возможность перехода по другим страницам (Категории, Продукты , Скидки )
+>>>>>>> origin/igor
 Реализовано отображение списка из 4-х категорий
 Реализована форма (HomeDicount) на получение скидки 5% c валидацией вводимых данных на клиентской стороне. Валидация реализуется с использованием библиотеки React Hook Form.
 Присутствует отображение 4 случайных товаров со скидкой.
+Стили разработаны с учетом адаптивного дизайна, что обеспечивает корректное отображение интерфейса на различных устройствах 1000px, 768px, 480px, 360px.
 
 <<<<<<< HEAD
 ### Категории товаров и Товары по категориям (Categories & Category) (Pokazachenko Iryna)

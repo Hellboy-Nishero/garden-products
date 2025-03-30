@@ -1,0 +1,120 @@
+.sale {
+  width: 100%;
+  padding: 0 40px; // Add padding to the section
+
+  .container {
+    max-width: 1440px; // Set max width for layout
+    margin: 0 auto; // Center the container
+
+    &__item {
+      display: flex;
+      justify-content: space-between; // Align items with space in between
+      align-items: center; // Align items vertically
+    }
+
+    &__title {
+      font-size: 64px; // Set large font size for title
+      font-weight: 600;
+      color: #4a4a4a; // Dark gray text color
+      display: flex;
+    }
+
+    &__btn-2 {
+      text-decoration: none;
+      display: none; // Hide button by default
+    }
+
+    &__list {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr); // 4 columns layout
+      gap: 20px; // Add spacing between items
+    }
+
+    // Responsive styles for screens up to 1000px
+    @media (max-width: 1000px) {
+      &__list {
+        grid-template-columns: repeat(4, 1fr);
+        width: 100%;
+        gap: 20px;
+      }
+
+      &__title {
+        font-size: 64px;
+      }
+    }
+
+    // Responsive styles for screens up to 768px
+    @media (max-width: 768px) {
+      &__list {
+        grid-template-columns: repeat(2, 1fr); // Reduce to 2 columns
+        width: 100%;
+        gap: 20px;
+      }
+
+      &__line {
+        max-width: 20%;
+      }
+
+      &__title {
+        font-size: 56px;
+      }
+    }
+
+    // Responsive styles for screens up to 480px
+    @media (max-width: 480px) {
+      &__title {
+        font-size: 48px;
+      }
+
+      &__list {
+        grid-template-columns: repeat(2, 1fr); // Keep 2 columns for small screens
+        width: 100%;
+        gap: 20px;
+      }
+
+      &__btn {
+        font-size: 14px; // Reduce button font size
+      }
+    }
+
+    // Responsive styles for screens up to 360px
+    @media (max-width: 360px) {
+      &__list {
+        grid-template-columns: repeat(1, 1fr); // Switch to single-column layout
+        justify-content: center;
+        width: 100%;
+        gap: 20px;
+      }
+
+      &__title {
+        font-size: 40px; // Reduce title size for very small screens
+      }
+
+      &__btn {
+        display: none; // Hide button on smallest screens
+        text-decoration: none;
+      }
+
+      &__btn-2-position {
+        display: flex;
+        justify-content: center;
+        align-items: center; // Center button in the container
+      }
+
+      &__btn-2 {
+        display: flex;
+        font-weight: 500;
+        font-size: 16px;
+        padding: 8px 16px;
+        border: 1px solid #dddddd;
+        border-radius: 6px;
+        background-color: #fffff1;
+        margin-top: 24px;
+      }
+
+      &__line {
+        display: none; // Hide extra elements for better mobile UX
+      }
+    }
+  }
+}
