@@ -7,11 +7,15 @@ import { useSelector } from "react-redux";
 import ProductList from '../../components/ProductList/ProductList';
 
 const Category = () => {
-
+  // Get category title from URL params
   const { title } = useParams();
+  // Get all products from Redux store
   const products = useSelector(state => state.products.currentProducts);
+  // Get all categories from Redux store
   const categories = useSelector(state => state.category.categories);
+  // Find current category by title
   const category = categories.find((category) => category.title === title);
+  // Filter products that belong to this category
   const currentProducts = products.filter(product => product.categoryId === category.id);
 
   return (

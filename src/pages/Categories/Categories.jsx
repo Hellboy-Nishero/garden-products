@@ -6,13 +6,15 @@ import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import { fetchCategories } from '../../store/api/category';
 
 const Categories = () => {
-
+    // Get the list of categories from the Redux store
     const { categories } = useSelector((state) => state.category);
 
+    // Get dispatch function to trigger actions
     const dispatch = useDispatch();
 
+    // Fetch categories from API if they are not already loaded
     useEffect(() => {
-        if(categories.length === 0){
+        if (categories.length === 0) {
             dispatch(fetchCategories());
         }
     })
