@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import "./Navbar.scss";
-import { NavLink, Link } from 'react-router';
+import { NavLink, Link} from 'react-router';
 import { Heart, Moon, ShoppingBag, Sun, X } from 'lucide-react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toggleTheme } from '../../store/slices/themeSlice';
 import Button from '../Button/Button';
+import { showDailyProduct } from '../../store/slices/productSlice';
 
 
 
@@ -16,16 +17,26 @@ const Navbar = () => {
 
     const dispatch = useDispatch();
 
-    //toggles dark-mode after click
+    const cartCounter = useSelector(state => state.cart.count);
+
+    const likedCounter = useSelector(state => state.favorite.count);
+
+    // toggles dark-mode after click
     const toggleThemeHandler = () => {
         dispatch(toggleTheme());
+    }
+
+    // displays product of the day
+    const handleDisplayDailyProduct = () => {
+        if(isOpen) setIsOpen(false) // closes burger-menu if active
+        dispatch(showDailyProduct());
     }
 
     useEffect(() => {
         const resizeHandler = () => setWidth(window.innerWidth);
         window.addEventListener("resize", resizeHandler);
 
-        (() => {window.removeEventListener("resize", resizeHandler)})
+        return () => {window.removeEventListener("resize", resizeHandler)}
     }, []);
 
 
@@ -45,7 +56,7 @@ const Navbar = () => {
             </div>
             {width >= 768 && 
             <div className="nav-mid">
-                <Button className={"discount__title"}>1 day discount!</Button>
+                <Button className={"discount__title"} onClick={handleDisplayDailyProduct}>1 day discount!</Button>
                 <div className="links">
                     <NavLink to="/" className={({ isActive }) => `link ${isActive ? "active" : ""}`}>Main Page</NavLink>
                     <NavLink to="/categories" className={({ isActive }) => `link ${isActive ? "active" : ""}`}>Categories</NavLink>
@@ -56,11 +67,17 @@ const Navbar = () => {
             <div className="nav-right">
                 <div className="icon-item">
                     <Link to={"/favorites"}><Heart className='icon' /></Link>
-                    <span className="count">1</span>
+                    {
+                        likedCounter !== 0 &&
+                        <span className='count'>{likedCounter}</span>
+                    }
                 </div>
                 <div className="icon-item">
                     <Link to={"/cart"}><ShoppingBag className='icon' /></Link>
-                    <span className="count">10</span>
+                    {
+                        cartCounter !== 0 &&
+                        <span className='count'>{cartCounter}</span>
+                    }
                 </div>
                 {width < 768 &&
                 <>
@@ -75,9 +92,9 @@ const Navbar = () => {
                             <div className="menu-links">
                             <Link to="/" onClick={() => setIsOpen(false)} className="link">Main Page</Link>
                             <Link to="/categories" onClick={() => setIsOpen(false)} className="link">Categories</Link>
-                            <Link to="/allproducts" onClick={() => setIsOpen(false)} className="link">All products</Link>
-                            <Link to="/allsales" onClick={() => setIsOpen(false)} className="link">All sales</Link>
-                            <h3 className="discount__title">1 day discount!</h3>
+                            <Link to="/all-products" onClick={() => setIsOpen(false)} className="link">All products</Link>
+                            <Link to="/all-sales" onClick={() => setIsOpen(false)} className="link">All sales</Link>
+                            <Button className="discount__title" onClick={handleDisplayDailyProduct}>1 day discount!</Button>
                             </div>
                     </div>
                 </div>

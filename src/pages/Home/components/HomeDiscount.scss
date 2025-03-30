@@ -41,10 +41,6 @@
             .input,
             .btn {
               padding:  16px 32px;
-              align-self: stretch;
-              border-radius: 10px;
-              border: 1px solid  #ffffff;
-              font-size: 26px;
             }
   
             .input {
@@ -60,22 +56,11 @@
               }
   
               &::placeholder {
-                font-size: 26px;
-                color:#ffffff;
+                font-size: var(--font-medium);
+                color:var(--txt-white);
               }
             }
   
-            .btn {
-              color: #424436;
-              background-color: #ffffff;
-              font-weight: 600;
-              margin-bottom: 20px;
-  
-              &:disabled {
-                opacity: 0.6;
-                cursor: auto;
-              }
-            }
   
             .error__message {
               color: red;
