@@ -6,9 +6,10 @@ import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 import ProductList from "../../components/ProductList/ProductList";
 
 const AllProducts = () => {
+  // Use the useSelector hook to retrieve the list of products from the Redux store state
   const products = useSelector((state) => state.products.currentProducts);  
 
-  
+  // Return the JSX structure for the AllProducts page
   return (
     <div className="all-products">
       <Breadcrumbs />

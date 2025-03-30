@@ -3,23 +3,27 @@ import "./Filtration.scss";
 import { useDispatch, useSelector } from 'react-redux';
 import { applyFilter, toggleDiscount } from '../../store/slices/filterSlice';
 
+// Filtration component responsible for filtering and sorting products
 const Filtration = ({discounted}) => {
     const dispatch = useDispatch();
-
+    
+    // Get the discount filter state from Redux store
     const isChecked = useSelector(state => state.filter.discountActive);
-
+    
+    // Local state to manage filter data, initialized with values from Redux store
     const [filterData, setFilterData] = useState(useSelector(state => state.filter))
 
-
+    // Toggles the discount filter in Redux store
     const handleToggleDiscount = () => {
         dispatch(toggleDiscount());
     }
     
-
+    // Updates local filter state when input values change
     const changeInputHandler = (e) => {
         setFilterData(prev => ({...prev, [e.target.name]: e.target.value }));
     }
 
+    // Applies filters whenever the filterData state is updated
     useEffect(() => {
         dispatch(applyFilter(filterData));
     }, [filterData]);
@@ -27,7 +31,7 @@ const Filtration = ({discounted}) => {
 
   return (
     <div className="filtration">
-    {/* price section */}
+    {/* price filter section */}
     <div className="filtration__price">
         <span className="filtration__label">Price</span>
         <input
@@ -48,7 +52,7 @@ const Filtration = ({discounted}) => {
         />
     </div>
 
-    {/* sales checkbox */}
+    {/* Checkbox for filtering discounted items */}
     {
         discounted &&     
         <div className="filtration__discount">
@@ -61,7 +65,7 @@ const Filtration = ({discounted}) => {
     }
 
 
-    {/* sorting */}
+    {/* Sorting dropdown */}
     <div className="filtration__sort">
         <span className="filtration__label">Sorted</span>
         <select className="filtration__select" name='sorted' onChange={(e) => changeInputHandler(e)} value={filterData.sorted}>
