@@ -67,6 +67,9 @@ export const cartSlice = createSlice({
             state.count = state.cart.length;
             localStorage.setItem("cart", JSON.stringify(state.cart));
             localStorage.setItem("cartCount", JSON.stringify(state.count));
+        },
+        setDiscount: (state) => {
+            state.hasDiscount = true;
         }
     },
     extraReducers: (builder) => {
@@ -86,6 +89,6 @@ export const cartSlice = createSlice({
     }
 })
 
-export const { addToCart, increaseProduct, decreaseProduct, deleteProduct } = cartSlice.actions;
+export const { addToCart, increaseProduct, decreaseProduct, deleteProduct, setDiscount } = cartSlice.actions;
 
 export default cartSlice.reducer;

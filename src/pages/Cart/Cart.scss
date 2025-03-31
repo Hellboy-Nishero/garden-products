@@ -48,7 +48,8 @@
 
     &__content{
         display: grid;
-        grid-template-columns: 60% 40%;
+        // grid-template-columns: 60% 40%;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
         gap: var(--gap-large);
     }
 
@@ -194,6 +195,12 @@
         font-size: var(--font-large);
         font-weight: var(--normal);
         color: var(--txt-grey);
+    }
+
+    &__form-discount{
+        font-size: var(--font-large);
+        font-weight: var(--normal);
+        color: var(--green);
     }
 
     &__form-price{

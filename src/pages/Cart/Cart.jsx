@@ -26,6 +26,8 @@ const Cart = () => {
 
   const [width, setWidth] = useState(window.innerWidth);
 
+  const hasDiscount = useSelector(state => state.cart.hasDiscount);
+
   const onSubmit = async (data) => {
     const res = await fetch("https://exam-server-5c4e.onrender.com/order/send",{
       method: "POST",
@@ -123,8 +125,14 @@ const Cart = () => {
           <form onSubmit={handleSubmit(onSubmit)} className="cart__form">
             <h3 className="cart__form-title">Order details</h3>
             <div className="cart__form-info">
+              {
+                hasDiscount &&
+                <span className='cart__form-discount'>5% discount for the first order</span>
+              }
               <span className="cart__form-counter">{count} items</span>
-              <span className="cart__form-price">Total <h3 className='cart__totalPrice'>${total.toFixed(2).replace(".", ",")}</h3></span>
+              <span className="cart__form-price">Total <h3 className='cart__totalPrice'>${
+              hasDiscount ? (total-(total*0.05)).toFixed(2).replace(".", ",")
+             : total.toFixed(2).replace(".", ",")}</h3></span>
             </div>
             <div className="cart__form-inputs">
               {errors.name && <p className='error'>{errors.name.message}</p> }

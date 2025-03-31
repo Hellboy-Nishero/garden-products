@@ -2,6 +2,7 @@
 .categories-home {
   padding: 0 40px;
   max-width: 100%;
+  margin-bottom: 80px;
 
   .container {
     max-width: 1440px;  // Limits the container width
@@ -70,15 +71,17 @@
 
       &__btn-2 {
         display: flex;
-        justify-content: center;
-        align-items: center;
         font-weight: 500;
-        font-size: 36px;
-        padding: 12px 24px;
-        border: 1px solid #dddddd;
+        font-size: 16px;
+        padding: 8px 16px;
+        border: 1px solid var(--grey-divider);
         border-radius: 6px;
-        background-color: #fffff1;
+        background-color: transparent;
         margin-top: 24px;
+        color: var(--txt-grey);
+        &:hover{
+          color: var(--txt-black);
+        }
       }
       .breadcrumbs {
         display: none;  // Hides breadcrumbs on very small screens

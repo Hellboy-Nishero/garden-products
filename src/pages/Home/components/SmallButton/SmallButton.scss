@@ -35,43 +35,53 @@
     }
   
     // Responsive styles for smaller screen sizes
-    @media (max-width: 768px) {
+
+  }
+
+@media (max-width: 768px) {
+    .smallButton{
         &__title {
             font-size: 56px; // Adjust title size for medium screens
         }
-  
-        @media (max-width: 480px) {
-            &__title {
-                font-size: 42px; // Further adjusts title size for small screens
-            }
-  
-            &__btn-small {
-                font-size: 14px; // Reduces button text size for small screens
-            }
-  
-            &__btn-line {
-                display: none; // Hides the line on small screens
-            }
-  
-            &__btn-small {
-                display: none; // Hides the small button on small screens
-                text-decoration: none; // Removes any text decoration
-            }
-  
-            @media (max-width: 360px) {
-                &__title {
-                    font-size: 40px; // Even smaller title size for extra small screens
-                }
-  
-                &__btn-line {
-                    display: none; // Ensures the line is hidden on very small screens
-                }
-  
-                &__btn-small {
-                    display: none; // Hides the button on very small screens
-                    text-decoration: none;
-                }
-            }
-        }
     }
-  }
+
+}
+
+
+@media (max-width: 480px) {
+    .smallButton{
+        &__title {
+            font-size: 42px; // Further adjusts title size for small screens
+        }
+    
+        &__btn-small {
+            font-size: 14px; // Reduces button text size for small screens
+        }
+    
+        // &__btn-line {
+        //     display: none; // Hides the line on small screens
+        // }
+    
+        // &__btn-small {
+        //     display: none; // Hides the small button on small screens
+        //     text-decoration: none; // Removes any text decoration
+        // }
+    }
+}
+
+@media (max-width: 360px) {
+    .smallButton{
+        &__title {
+            font-size: 40px; // Even smaller title size for extra small screens
+        }
+    
+        &__btn-line {
+            display: none; // Ensures the line is hidden on very small screens
+        }
+    
+        &__btn-small {
+            display: none; // Hides the button on very small screens
+            text-decoration: none;
+        }
+    }  
+}

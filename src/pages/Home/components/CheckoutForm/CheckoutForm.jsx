@@ -3,8 +3,9 @@ import "./CheckoutForm.scss";
 import { useForm } from "react-hook-form"; // Importing useForm for form handling
 import { useDispatch } from "react-redux"; // Importing useDispatch to interact with Redux store
 import Button from "../../../../components/Button/Button";
+import { setDiscount } from "../../../../store/slices/cartSlice";
 
-function CheckoutForm({ sendingdiscount }) {
+function CheckoutForm({ sendingdiscount, handleSendDiscount }) {
   const dispatch = useDispatch(); // Initializing Redux dispatch
   
   // Initializing form handling using react-hook-form
@@ -12,12 +13,20 @@ function CheckoutForm({ sendingdiscount }) {
     register, // Function to register form fields
     handleSubmit, // Function to handle form submission
     reset, // Function to reset form fields
-    formState: { errors, isValid }, // Object containing form validation state
+    formState: { errors}, // Object containing form validation state
   } = useForm({ mode: "onBlur" }); // Enabling validation on blur
 
   // Function triggered on form submission
-  const onSubmit = (data) => {
-    reset(); // Reset form fields after submission
+  const onSubmit = async (data) => {
+    const res = await fetch("https://exam-server-5c4e.onrender.com/sale/send", {
+      method: "POST",
+      body: JSON.stringify(data)
+    })
+
+    if(res.ok){
+      dispatch(setDiscount());
+      reset(); // Reset form fields after submission
+    }
   };
 
   return (
@@ -40,7 +49,7 @@ function CheckoutForm({ sendingdiscount }) {
         <input
           {...register("number", {
             required: "Field is required!",
-            minLength: { value: 13, message: "min 13 characters" }, // Minimum length validation
+            minLength: { value: 8, message: "min 8 characters" }, // Minimum length validation
             maxLength: { value: 13, message: "max 13 characters" }, // Maximum length validation
           })}
           type="number"
@@ -72,7 +81,7 @@ function CheckoutForm({ sendingdiscount }) {
         {sendingdiscount ? (
           <Button type={"submitted"} />
         ) : (
-          <Button type={"secondary"}>Get a discount</Button>
+          <Button type={"secondary"} onClick={handleSendDiscount}>Get a discount</Button>
         )}
       </label>
     </form>

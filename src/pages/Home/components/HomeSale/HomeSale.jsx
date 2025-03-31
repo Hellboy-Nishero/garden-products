@@ -4,6 +4,7 @@ import { useSelector } from "react-redux"; // Import useSelector to access Redux
 import { Link } from "react-router-dom"; // Import Link for navigation
 import ProductCard from "../../../../components/ProductCard/ProductCard"; // Import the product card component
 import SmallButton from "../SmallButton/SmallButton";
+import Button from "../../../../components/Button/Button";
 
 const RandomSale = () => {
   // Get the list of products from the Redux store
@@ -49,7 +50,7 @@ const RandomSale = () => {
         
         <div className="container__btn-2-position">
           <Link to={`/all-sales`}>
-            <button className="container__btn-2">All sales</button> {/* Button linking to all sales page */}
+            <Button type={"secondary"} className="container__btn-2">All sales</Button> {/* Button linking to all sales page */}
           </Link>
         </div>
       </div>

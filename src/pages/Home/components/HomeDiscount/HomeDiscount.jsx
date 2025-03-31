@@ -5,21 +5,22 @@ import CheckoutForm from "../CheckoutForm/CheckoutForm"; // Import CheckoutForm 
 
 function HomeDiscount() {
   const [sendingDiscount, setSendingDiscount] = useState(false); // State to track discount sending status
-  const dispatch = useDispatch(); // Initialize dispatch function from Redux
 
   const handleSendDiscount = () => {
     setSendingDiscount(true); // Set state to true when discount is sent
   };
 
-  useEffect(() => {}, [sendingDiscount]); // Effect triggered when sendingDiscount changes (currently does nothing)
+  useEffect(() => {}, [sendingDiscount]); // Effect triggered when sendingDiscount changes
 
   return (
       <div className="discount__container">
         <div className="discount__container_box">
           <h1>5% off on the first order</h1> {/* Discount offer text */}
           <div className="form__box">
-            <img className="img" src="./discountImg.png" alt="Discount Offer" /> {/* Discount image */}
-            <CheckoutForm sendingdiscount={sendingDiscount}/> {/* Checkout form with discount status */}
+            <div className="img-container">
+              <img className="img" src="./discountImg.png" alt="Discount Offer" /> {/* Discount image */}
+            </div>
+            <CheckoutForm sendingdiscount={sendingDiscount} handleSendDiscount={handleSendDiscount} /> {/* Checkout form with discount status */}
           </div>
         </div>
       </div>

@@ -63,6 +63,7 @@
     display: flex;
     gap: var(--gap-large);
     grid-area: price;
+    flex-wrap: wrap;
     .currentPrice{
       font-size: var(--font-title);
       color: var(--txt-black);
@@ -190,14 +191,9 @@
     .counter__container{
       gap: var(--gap-big);
       .counter__box{
-        flex-shrink: 1;
         .counter{
           max-width: 80px;
         }
-      }
-      .add__to{
-        flex-shrink: 1;
-        max-width: 375px;
       }
     }
   }
@@ -213,26 +209,11 @@
       min-width: 210px;
       height: 286px;
     }
+  }
 
-    .counter__container{
-      display: flex;
-      flex-direction: column;
-      justify-content: stretch;
-      width: 100%;
-   
-      .counter__box{
-        max-width: 210px;
-        display: flex;
-        justify-content: space-between;
-        
-      }
-  
-      .add__to{
-        max-width:none;
-        height: 58px;
-        width: 100%;
-        flex-grow: 1;
-      }
+  .counter__container{
+    .counter__box{
+      align-self: flex-start;
     }
   }
 }
@@ -267,23 +248,18 @@
           .oldPrice{
             font-size: 30px;
           }
-         
         }
-        
-      .counter__container{
-        .counter__box{
-          max-width: 210px;
-          height: 56px;
+
+        .counter__container{
+          .counter__box{
+            .counter{
+              max-width: 40px;
+            }
+            .counter__btn{
+              padding: 11.5px;
+            }
           }
         }
-    
-        .add__to{
-          
-          height: 58px;
-          width: 100%;
-          flex-grow: 1;
-      }
-
   }
 }
 
@@ -323,7 +299,6 @@
       align-items: center;
       .add__to{
         width: 100%;
-        flex-shrink: 0;
       }
     }
   }
