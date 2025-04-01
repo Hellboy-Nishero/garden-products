@@ -8,10 +8,13 @@ import { initCurrentProducts, initDailyProduct } from '../store/slices/productSl
 import DailyProduct from '../components/DailyProduct/DailyProduct';
 import { favoriteCheckSales } from '../store/slices/favoriteSlice';
 import { cartCheckSales } from '../store/slices/cartSlice';
+import { fetchCategories } from '../store/api/category';
 
 const Layout = () => {
   const dark = useSelector(state => state.theme.isDark);
   const products = useSelector(state => state.products.products);
+  // Get the list of categories from the Redux store
+  const { categories } = useSelector((state) => state.category);
   const dailyProduct = useSelector(state => state.products.dailyProduct);
   const dispatch = useDispatch();
 
@@ -23,9 +26,13 @@ const Layout = () => {
       dispatch(initDailyProduct());
       dispatch(initCurrentProducts());
     }
-    
-  }, [dispatch, products]);
 
+    // Fetch categories from API if they are not already loaded
+    if (categories.length === 0) {
+        dispatch(fetchCategories());
+    }
+    
+  }, [dispatch, products, categories]);
 
   useEffect(() => {
     dispatch(cartCheckSales());
