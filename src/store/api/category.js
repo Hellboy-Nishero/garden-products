@@ -13,8 +13,6 @@ export const fetchCategories = createAsyncThunk(
             }
              // Parse the response data
             const data = await response.json();
-            // Log data to the console (for debugging)
-            console.log(data);
                   // Return the fetched categories
             return data;
         } catch (error) {
