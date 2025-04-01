@@ -1,0 +1,58 @@
+/**
+ * Styles for the HomeDiscount component
+ */
+ .discount__container {
+  padding: 40px; // Add padding around the container
+  width: 100%; // Full width
+  margin-bottom: 80px;
+
+  &_box {
+    background: linear-gradient(90deg,
+        rgba(135, 147, 61, 1) 40%,
+        rgba(85, 97, 11, 1) 70%); // Gradient background
+    padding: 32px;
+    border-radius: 10px; // Rounded corners
+
+    h1 {
+      color: var(--txt-white); // Light text color
+      font-size: var(--font-title); // Large font size
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .form__box{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--gap-large);
+      .img-container{
+        width: 100%;
+        min-height: 232px;
+        .img{
+          width: 100%;
+          height: 100%;
+          display: block;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+
+  // Responsive styles
+  @media (max-width: 768px) {
+    &_box{
+      padding: 20px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    &_box {
+      padding: 12px;
+    }
+  }
+
+  @media (max-width: 360px) {
+    &_box {
+      padding: 12px;
+    }
+  }
+}

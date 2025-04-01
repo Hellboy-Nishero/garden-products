@@ -1,0 +1,91 @@
+
+.categories-home {
+  padding: 0 40px;
+  max-width: 100%;
+  margin-bottom: 80px;
+
+  .container {
+    max-width: 1440px;  // Limits the container width
+
+    &__position {
+      display: flex;
+      align-items: center;  // Centers items vertically
+    }
+
+    &__btn-2 {
+      text-decoration: none;  // Hidden by default
+      display: none;
+    }
+
+    &__list {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);  // Creates a 4-column grid
+      gap: 20px;  // Space between grid items
+    }
+
+       // Responsive styles for different screen sizes
+    @media (max-width: 1000px) {
+      &__list {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        width: 100%;
+        gap: 20px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      &__list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);  // Reduces to 2 columns
+        width: 100%;
+        gap: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      &__list {
+        grid-template-columns: repeat(2, 1fr);  // Keeps 2 columns on small screens
+        width: 100%;
+        gap: 20px;
+      }
+
+      .breadcrumbs {
+        display: none;  // Hides breadcrumbs on small screens
+      }
+    }
+
+    @media (max-width: 360px) {
+      &__list {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);  // Switches to a single-column layout
+        justify-content: center;
+        width: 100%;
+        gap: 20px;
+      }
+
+      &__btn-2-position {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      &__btn-2 {
+        display: flex;
+        font-weight: 500;
+        font-size: 16px;
+        padding: 8px 16px;
+        border: 1px solid var(--grey-divider);
+        border-radius: 6px;
+        background-color: transparent;
+        margin-top: 24px;
+        color: var(--txt-grey);
+        &:hover{
+          color: var(--txt-black);
+        }
+      }
+      .breadcrumbs {
+        display: none;  // Hides breadcrumbs on very small screens
+      }
+    }
+  }
+}

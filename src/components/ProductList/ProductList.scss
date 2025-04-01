@@ -1,0 +1,15 @@
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
+    gap: var(--gap-large);
+  }
+
+
+.products-empty{
+  font-size: var(--font-big);
+  font-weight: var(--light-bold);
+  text-decoration: underline;
+  grid-column: 1/5;
+  text-align: center;
+  color: var(--txt-black);
+}

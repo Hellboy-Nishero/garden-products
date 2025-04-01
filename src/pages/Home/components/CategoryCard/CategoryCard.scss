@@ -1,0 +1,30 @@
+.categoryCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(); // Space between elements inside the card
+
+  // Hover effect: change title color when hovering over the card
+  &:hover {
+      .categoryCard__title {
+          color: var(--green);
+      }
+  }
+
+  &__image img {
+      display: block;
+      height: 350px; // Fixed height for images
+      border-radius: 12px; // Rounded corners
+      width: 100%; // Makes the image responsive
+      object-fit: cover; // Ensures the image covers the container properly
+  }
+
+  &__title {
+      font-size: var(--font-medium);
+      font-weight: 500;
+      line-height: 26px;
+      align-items: center;
+      text-align: center;
+      color: var(--txt-black); // Default text color
+      transition: all 0.3s ease-in-out; // Smooth transition for hover effect
+  }
+}

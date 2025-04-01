@@ -1,0 +1,104 @@
+.product-card {
+    position: relative;
+    background-color: var(--white);
+    transition: all .4s ease-in-out;
+    border-radius: var(--radius-big);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow: hidden;
+
+    .discont-badge {
+      position: absolute;
+      top: 16px;
+      left: 21px;
+      background-color: var(--sale);
+      color: var(--white);
+      padding: 4px 8px;
+      font-size: var(--font-medium);
+      font-weight: var(--light-bold);
+      border-radius: var(--radius-small);
+      text-align: center;
+    }
+
+    .product-image {
+      width: 100%;
+      height: 284px;
+      object-fit: cover;
+      
+    }
+
+    .product-icons {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap-small);
+
+      .icon {
+        width: 48px;
+        height: 48px;
+        cursor: pointer;
+        color: var(--black);
+        transition: all 0.3s ease;
+        fill: var(--white);
+        stroke-width: 1px;
+
+        &:hover {
+          fill: var(--black);
+          color: var(--txt-white)
+        }
+
+        &.liked{
+          fill: var(--green);
+          color: var(--txt-black);
+          &:hover{
+            fill: var(--light-grey);
+            color: var(--green);
+          }
+        }
+
+      }
+    }
+
+    .product-title {
+      font-size: var(--font-medium);
+      font-weight: var(--normal);
+      color: var(--txt-black);
+      margin: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 252px;
+    }
+
+    .card_footer {
+      display: flex;
+      flex-direction: column;
+      padding: 16px;
+    }
+
+    .product-price {
+      display: flex;
+      align-items: baseline;
+      gap: var(--gap-small);
+      margin-top: 16px;
+      flex-wrap: wrap;
+      
+
+      .current-price {
+        font-size: var(--font-large);
+        font-weight: var(--light-bold);
+        color: var(--txt-black);
+      }
+
+      .old-price {
+        font-size: var(--font-medium);
+        font-weight: var(--normal);
+        color: var(--txt-grey);
+        text-decoration: line-through;    
+      }
+    }
+  }
