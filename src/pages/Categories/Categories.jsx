@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import "./categories.scss";
+import "./Categories.scss";
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
