@@ -17,7 +17,7 @@ const Banner = () => {
           <div className="banner__content">
             {/* Main title of the banner */}
             <h1 className='title'>
-              Amazing Discounts <span>on Garden Products!</span>
+              Amazing Discounts on Garden Products!
             </h1>
             
             {/* Navigation button linking to the "All Products" page */}

@@ -150,10 +150,11 @@
             height: 100%;
             background-color: #10101080;
             transition: all .4s ease-in-out;
-            display: flex;
-            justify-content: flex-end;
             z-index: 999;
+            // display: none;
             &.open{
+                // display: flex;
+                justify-content: flex-end;
                 opacity: 1;
                 visibility: visible;
                 transform: translateX(0);

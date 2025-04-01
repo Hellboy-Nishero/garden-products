@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import "./Navbar.scss";
 import { NavLink, Link} from 'react-router';
 import { Heart, Moon, ShoppingBag, Sun, X } from 'lucide-react';
@@ -21,6 +21,8 @@ const Navbar = () => {
 
     const likedCounter = useSelector(state => state.favorite.count);
 
+    const menuRef = useRef(null);
+
     // toggles dark-mode after click
     const toggleThemeHandler = () => {
         dispatch(toggleTheme());
@@ -30,6 +32,29 @@ const Navbar = () => {
     const handleDisplayDailyProduct = () => {
         if(isOpen) setIsOpen(false) // closes burger-menu if active
         dispatch(showDailyProduct());
+    }
+
+    const toggleMenu = () => {
+        let timeout = 0;
+        switch(isOpen){
+            case true:
+                setIsOpen(false);
+                timeout = setTimeout(() => {
+                    menuRef.current.style.display = "none";
+                }, 400)
+                return () => clearTimeout(timeout);
+
+            case false:
+                setTimeout(() => {
+                    setIsOpen(true);
+                    menuRef.current.style.display = "flex"
+                }, 10)
+                return () => clearTimeout(timeout);
+
+
+            default:
+                return menuRef.current.style.display = "none";
+        }
     }
 
     useEffect(() => {
@@ -81,14 +106,14 @@ const Navbar = () => {
                 </div>
                 {width < 768 &&
                 <>
-                <div className="burger" onClick={() => setIsOpen(!isOpen)}>
+                <div className="burger" onClick={toggleMenu}>
                     <div className={isOpen ? "bar open" : "bar"}></div>
                     <div className={isOpen ? "bar open" : "bar"}></div>
                     <div className={isOpen ? "bar open" : "bar"}></div>
                 </div>
-                <div className={`menu ${isOpen ? "open" : ""}`}>
+                <div ref={menuRef} className={`menu ${isOpen ? "open" : ""}`}>
                     <div className="menu-content">
-                        <X className='icon' onClick={() => setIsOpen(false)} />
+                        <X className='icon' onClick={toggleMenu} />
                             <div className="menu-links">
                             <Link to="/" onClick={() => setIsOpen(false)} className="link">Main Page</Link>
                             <Link to="/categories" onClick={() => setIsOpen(false)} className="link">Categories</Link>
